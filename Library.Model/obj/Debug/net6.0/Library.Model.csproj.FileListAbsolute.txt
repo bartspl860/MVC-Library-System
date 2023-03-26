@@ -1,0 +1,14 @@
+D:\Dokumenty\Repositories\MVC Library System\Library.Model\bin\Debug\net6.0\Library.Model.deps.json
+D:\Dokumenty\Repositories\MVC Library System\Library.Model\bin\Debug\net6.0\Library.Model.runtimeconfig.json
+D:\Dokumenty\Repositories\MVC Library System\Library.Model\bin\Debug\net6.0\Library.Model.dll
+D:\Dokumenty\Repositories\MVC Library System\Library.Model\bin\Debug\net6.0\Library.Model.pdb
+D:\Dokumenty\Repositories\MVC Library System\Library.Model\obj\Debug\net6.0\Library.Model.csproj.AssemblyReference.cache
+D:\Dokumenty\Repositories\MVC Library System\Library.Model\obj\Debug\net6.0\Library.Model.GeneratedMSBuildEditorConfig.editorconfig
+D:\Dokumenty\Repositories\MVC Library System\Library.Model\obj\Debug\net6.0\Library.Model.AssemblyInfoInputs.cache
+D:\Dokumenty\Repositories\MVC Library System\Library.Model\obj\Debug\net6.0\Library.Model.AssemblyInfo.cs
+D:\Dokumenty\Repositories\MVC Library System\Library.Model\obj\Debug\net6.0\Library.Model.csproj.CoreCompileInputs.cache
+D:\Dokumenty\Repositories\MVC Library System\Library.Model\obj\Debug\net6.0\Library.Model.dll
+D:\Dokumenty\Repositories\MVC Library System\Library.Model\obj\Debug\net6.0\refint\Library.Model.dll
+D:\Dokumenty\Repositories\MVC Library System\Library.Model\obj\Debug\net6.0\Library.Model.pdb
+D:\Dokumenty\Repositories\MVC Library System\Library.Model\obj\Debug\net6.0\Library.Model.genruntimeconfig.cache
+D:\Dokumenty\Repositories\MVC Library System\Library.Model\obj\Debug\net6.0\ref\Library.Model.dll

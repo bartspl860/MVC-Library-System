@@ -1,0 +1,17 @@
+D:\Dokumenty\Repositories\MVC Library System\Library.DAL\bin\Debug\net6.0\Library.DAL.deps.json
+D:\Dokumenty\Repositories\MVC Library System\Library.DAL\bin\Debug\net6.0\Library.DAL.runtimeconfig.json
+D:\Dokumenty\Repositories\MVC Library System\Library.DAL\bin\Debug\net6.0\Library.DAL.dll
+D:\Dokumenty\Repositories\MVC Library System\Library.DAL\bin\Debug\net6.0\Library.DAL.pdb
+D:\Dokumenty\Repositories\MVC Library System\Library.DAL\obj\Debug\net6.0\Library.DAL.csproj.AssemblyReference.cache
+D:\Dokumenty\Repositories\MVC Library System\Library.DAL\obj\Debug\net6.0\Library.DAL.GeneratedMSBuildEditorConfig.editorconfig
+D:\Dokumenty\Repositories\MVC Library System\Library.DAL\obj\Debug\net6.0\Library.DAL.AssemblyInfoInputs.cache
+D:\Dokumenty\Repositories\MVC Library System\Library.DAL\obj\Debug\net6.0\Library.DAL.AssemblyInfo.cs
+D:\Dokumenty\Repositories\MVC Library System\Library.DAL\obj\Debug\net6.0\Library.DAL.csproj.CoreCompileInputs.cache
+D:\Dokumenty\Repositories\MVC Library System\Library.DAL\obj\Debug\net6.0\Library.DAL.dll
+D:\Dokumenty\Repositories\MVC Library System\Library.DAL\obj\Debug\net6.0\refint\Library.DAL.dll
+D:\Dokumenty\Repositories\MVC Library System\Library.DAL\obj\Debug\net6.0\Library.DAL.pdb
+D:\Dokumenty\Repositories\MVC Library System\Library.DAL\obj\Debug\net6.0\Library.DAL.genruntimeconfig.cache
+D:\Dokumenty\Repositories\MVC Library System\Library.DAL\obj\Debug\net6.0\ref\Library.DAL.dll
+D:\Dokumenty\Repositories\MVC Library System\Library.DAL\bin\Debug\net6.0\Library.Model.dll
+D:\Dokumenty\Repositories\MVC Library System\Library.DAL\bin\Debug\net6.0\Library.Model.pdb
+D:\Dokumenty\Repositories\MVC Library System\Library.DAL\obj\Debug\net6.0\Library.DAL.csproj.CopyComplete
