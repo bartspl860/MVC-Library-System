@@ -2,9 +2,12 @@
 
 namespace Library.DAL
 {    
-    public class ReaderRepository
+    public class ReaderRepository : IReaderRepository, IDisposable
     {
         private readonly DbLibraryContext _context;
+
+        private bool _disposed = false;
+
         public ReaderRepository(DbLibraryContext dbLibraryContext) {
             this._context = dbLibraryContext;
         }
@@ -31,6 +34,28 @@ namespace Library.DAL
 
         public IEnumerable<Reader> GetAllReaders() {
             return _context.Readers.ToList();
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+
+            GC.SuppressFinalize(this);
+        }
+
+        private void Dispose(bool disposing)
+        {
+            if (_disposed)
+            {
+                return;
+            }
+
+            if (disposing)
+            {
+                _context.Dispose();
+            }
+
+            _disposed = true;
         }
     }
 }
