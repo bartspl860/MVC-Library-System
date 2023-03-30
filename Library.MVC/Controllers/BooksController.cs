@@ -102,7 +102,7 @@ namespace Library.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Book? course = _unitOfWork.BooksRepository.GetByID(id);
+            Book? book = _unitOfWork.BooksRepository.GetByID(id);
             _unitOfWork.BooksRepository.Delete(id);
             _unitOfWork.Save();
             return RedirectToAction(nameof(Index));
