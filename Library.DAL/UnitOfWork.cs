@@ -6,7 +6,10 @@ namespace Library.DAL
     {
         private DbLibraryContext _dbLibraryContext = new DbLibraryContext();
         private Repository<Book>? booksRepository;
-        private Repository<PublishingHouse>? publishingHouseRepository;
+        private Repository<PublishingHouse>? publishingHousesRepository;
+        private Repository<Author>? authorsRepository;
+        private Repository<Reader>? readersRepository;
+        private Repository<Borrow>? borrowsRepository;
 
         public Repository<Book> BooksRepository { 
             get {
@@ -16,16 +19,46 @@ namespace Library.DAL
             } 
         }
 
-        public Repository<PublishingHouse> PublishingHouseRepository
+        public Repository<PublishingHouse> PublishingHousesRepository
         {
             get
             {
-                if (publishingHouseRepository == null)
-                    publishingHouseRepository = new Repository<PublishingHouse>(_dbLibraryContext);
-                return publishingHouseRepository;
+                if (publishingHousesRepository == null)
+                    publishingHousesRepository = new Repository<PublishingHouse>(_dbLibraryContext);
+                return publishingHousesRepository;
             }
         }
 
+        public Repository<Author> AuthorsRepository
+        {
+            get
+            {
+                if (authorsRepository == null)
+                    authorsRepository = new Repository<Author>(_dbLibraryContext);
+                return authorsRepository;
+            }
+        }
+
+        public Repository<Reader> ReadersRepository
+        {
+            get
+            {
+                if (readersRepository == null)
+                    readersRepository = new Repository<Reader>(_dbLibraryContext);
+                return readersRepository;
+            }
+        }
+
+        public Repository<Borrow> BorrowsRepository
+        {
+            get
+            {
+                if (borrowsRepository == null)
+                    borrowsRepository = new Repository<Borrow>(_dbLibraryContext);
+                return borrowsRepository;
+            }
+        }
+        
         public void Save()
         {
             _dbLibraryContext.SaveChanges();
@@ -40,6 +73,7 @@ namespace Library.DAL
             }
             disposed = true;
         }
+
         public void Dispose()
         {
             Dispose(true);

@@ -28,7 +28,7 @@ namespace Library.MVC.Controllers
             Book? book = _unitOfWork.BooksRepository.GetByID(id);
             if (book == null)
                 return Redirect("/Home/Error");
-            PublishingHouse? ph = _unitOfWork.PublishingHouseRepository.GetByID(book.PublishingHouseId);
+            PublishingHouse? ph = _unitOfWork.PublishingHousesRepository.GetByID(book.PublishingHouseId);
             if (ph == null)
                 return Redirect("/Home/Error");
             ViewBag.PublishingHouseName = ph.Name;
@@ -76,7 +76,7 @@ namespace Library.MVC.Controllers
 
         private void PopulatePublishingHousesDropDownList(object? selectedPublishingHouse = null)
         {
-            var publishingHouses = _unitOfWork.PublishingHouseRepository.Get(
+            var publishingHouses = _unitOfWork.PublishingHousesRepository.Get(
                 orderBy: q => q.OrderBy(d => d.Name)
             );
             ViewBag.PublishingHouseId = new SelectList(publishingHouses, "Id", "Name", selectedPublishingHouse);
@@ -89,7 +89,7 @@ namespace Library.MVC.Controllers
             if (book == null)
                 return Redirect("/Home/Error");
 
-            PublishingHouse? ph = _unitOfWork.PublishingHouseRepository.GetByID(book.PublishingHouseId);
+            PublishingHouse? ph = _unitOfWork.PublishingHousesRepository.GetByID(book.PublishingHouseId);
             if(ph == null)
                 return Redirect("/Home/Error");
 
