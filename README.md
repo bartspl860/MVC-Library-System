@@ -17,10 +17,10 @@
  <ul>
   <li>Przeglądanie książek i jej opisów</li>
   <li>Filtrowanie książek po wydawnictwie i autorach</li>
-  <li>Wypożyczanie i zwracanie ksiażek</li>
+  <li>Wypożyczanie i zwracanie książek</li>
  </ul>
  
- ## Funkcjonalności dla adminstratora
+ ## Funkcjonalności dla administratora
  <ul>
   <li>Tworzenie, czytanie, aktualizowanie i usuwanie (CRUD), każdej encji w bazie danych za pomocą interfejsu graficznego</li>
  </ul>
