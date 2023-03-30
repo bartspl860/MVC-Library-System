@@ -12,3 +12,17 @@ D:\Dokumenty\Repositories\MVC Library System\Library.Model\obj\Debug\net6.0\refi
 D:\Dokumenty\Repositories\MVC Library System\Library.Model\obj\Debug\net6.0\Library.Model.pdb
 D:\Dokumenty\Repositories\MVC Library System\Library.Model\obj\Debug\net6.0\Library.Model.genruntimeconfig.cache
 D:\Dokumenty\Repositories\MVC Library System\Library.Model\obj\Debug\net6.0\ref\Library.Model.dll
+F:\GitHub\Polsl_Sem6\Taiib_Project\MVC-Library-System\Library.Model\bin\Debug\net6.0\Library.Model.deps.json
+F:\GitHub\Polsl_Sem6\Taiib_Project\MVC-Library-System\Library.Model\bin\Debug\net6.0\Library.Model.runtimeconfig.json
+F:\GitHub\Polsl_Sem6\Taiib_Project\MVC-Library-System\Library.Model\bin\Debug\net6.0\Library.Model.dll
+F:\GitHub\Polsl_Sem6\Taiib_Project\MVC-Library-System\Library.Model\bin\Debug\net6.0\Library.Model.pdb
+F:\GitHub\Polsl_Sem6\Taiib_Project\MVC-Library-System\Library.Model\obj\Debug\net6.0\Library.Model.csproj.AssemblyReference.cache
+F:\GitHub\Polsl_Sem6\Taiib_Project\MVC-Library-System\Library.Model\obj\Debug\net6.0\Library.Model.GeneratedMSBuildEditorConfig.editorconfig
+F:\GitHub\Polsl_Sem6\Taiib_Project\MVC-Library-System\Library.Model\obj\Debug\net6.0\Library.Model.AssemblyInfoInputs.cache
+F:\GitHub\Polsl_Sem6\Taiib_Project\MVC-Library-System\Library.Model\obj\Debug\net6.0\Library.Model.AssemblyInfo.cs
+F:\GitHub\Polsl_Sem6\Taiib_Project\MVC-Library-System\Library.Model\obj\Debug\net6.0\Library.Model.csproj.CoreCompileInputs.cache
+F:\GitHub\Polsl_Sem6\Taiib_Project\MVC-Library-System\Library.Model\obj\Debug\net6.0\Library.Model.dll
+F:\GitHub\Polsl_Sem6\Taiib_Project\MVC-Library-System\Library.Model\obj\Debug\net6.0\refint\Library.Model.dll
+F:\GitHub\Polsl_Sem6\Taiib_Project\MVC-Library-System\Library.Model\obj\Debug\net6.0\Library.Model.pdb
+F:\GitHub\Polsl_Sem6\Taiib_Project\MVC-Library-System\Library.Model\obj\Debug\net6.0\Library.Model.genruntimeconfig.cache
+F:\GitHub\Polsl_Sem6\Taiib_Project\MVC-Library-System\Library.Model\obj\Debug\net6.0\ref\Library.Model.dll
