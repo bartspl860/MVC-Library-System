@@ -1,10 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Model
 {
@@ -51,7 +45,7 @@ namespace Library.Model
                 new Reader { Name = "Janek", Surname = "Betoniarek", DateOfBirth = DateTime.Parse("2005-12-01"), LibraryCardNumber = 5678, LibraryCardExpirationDate = DateTime.Parse("2024-01-01") }
             };
 
-            
+            /*
             books[0].Authors.Add(authors[0]);
             books[1].Authors.Add(authors[0]);
             books[2].Authors.Add(authors[0]);
@@ -83,7 +77,8 @@ namespace Library.Model
                authors[0],
                authors[1],
                authors[2]
-               );                      
+               );       
+            */
         }
     }
 }

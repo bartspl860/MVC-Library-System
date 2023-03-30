@@ -10,6 +10,6 @@ namespace Library.Model
     [Table("Authors")]
     public class Author : Person
     {
-        public ICollection<Book> WrittenBooks { get; set; }
+        public ICollection<Book>? WrittenBooks { get; set; }
     }
 }
