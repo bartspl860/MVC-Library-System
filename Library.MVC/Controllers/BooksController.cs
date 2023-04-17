@@ -2,115 +2,109 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Library.Model;
 using Library.DAL;
-using System.Data;
 
 namespace Library.MVC.Controllers
 {
-    public class BooksController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class BooksController : ControllerBase
     {
-        private readonly UnitOfWork _unitOfWork = new UnitOfWork();
+        private readonly IUnitOfWork _unitOfWork;
 
-        // GET: Books
-        public ViewResult Index()
+        public BooksController(IUnitOfWork unitOfWork)
         {
-            var books = _unitOfWork.BooksRepository.Get(includeProperties: "PublishingHouse");
-            return View(books.ToList());
+            _unitOfWork = unitOfWork;
         }
 
-        // GET: Books/Details/5
-        public ActionResult Details(int id)
+        // GET: api/Books
+        [HttpGet]
+        public IEnumerable<Book> GetBooks()
         {
-            Book? book = _unitOfWork.BooksRepository.GetByID(id);
+            return _unitOfWork.BooksRepository.GetAllBooks();
+        }
+        
+        // GET: api/Books/5
+        [HttpGet("{id}")]
+        public ActionResult<Book> GetBook(int id)
+        {
+            var book = _unitOfWork.BooksRepository.GetBook(id);
+
             if (book == null)
-                return Redirect("/Home/Error");
-            PublishingHouse? ph = _unitOfWork.PublishingHousesRepository.GetByID(book.PublishingHouseId);
-            if (ph == null)
-                return Redirect("/Home/Error");
-            ViewBag.PublishingHouseName = ph.Name;
-            return View(book);
-        }
+                return NotFound();
 
-        // GET: Books/Create
-        public ActionResult Create()
+            return book;
+        }
+        
+        // PUT: api/Books/5
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPut("{id}")]
+        public IActionResult PutBook(int id, Book book)
         {
-            PopulatePublishingHousesDropDownList();
-            return View();
-        }
+            if (id != book.Id)
+            {
+                return BadRequest();
+            }
 
-        // POST: Books/Create
+            var existingBook = _unitOfWork.BooksRepository.GetBook(id);
+
+            if (existingBook == null)
+            {
+                return NotFound();
+            }
+
+            existingBook.Title = book.Title;
+            existingBook.Authors = book.Authors;
+            existingBook.PublishingHouse = book.PublishingHouse;
+            existingBook.PublishingHouseId = book.PublishingHouseId;                        
+
+            _unitOfWork.BooksRepository.UpdateBook(existingBook);
+
+            return NoContent();
+        }
+        /*
+        // POST: api/Books
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(Book book)
+        public async Task<ActionResult<Book>> PostBook(Book book)
         {
-            _unitOfWork.BooksRepository.Insert(book);
-            _unitOfWork.Save();
-            return RedirectToAction(nameof(Index));
+          if (_context.Books == null)
+          {
+              return Problem("Entity set 'DbLibraryContext.Books'  is null.");
+          }
+            _context.Books.Add(book);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetBook", new { id = book.Id }, book);
         }
 
-        // GET: Books/Edit/5
-        public ActionResult Edit(int id)
+        // DELETE: api/Books/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteBook(int id)
         {
-            Book? book = _unitOfWork.BooksRepository.GetByID(id);
+            if (_context.Books == null)
+            {
+                return NotFound();
+            }
+            var book = await _context.Books.FindAsync(id);
             if (book == null)
-                return Redirect("/Home/Error");
-            PopulatePublishingHousesDropDownList(book.PublishingHouseId);
-            return View(book);
-        }
+            {
+                return NotFound();
+            }
 
-        // POST: Books/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, [Bind("Id,Title,PublishingHouseId")] Book book)
-        {
-            _unitOfWork.BooksRepository.Update(book);
-            _unitOfWork.Save();
-            return RedirectToAction(nameof(Index));
-        }
+            _context.Books.Remove(book);
+            await _context.SaveChangesAsync();
 
-        private void PopulatePublishingHousesDropDownList(object? selectedPublishingHouse = null)
-        {
-            var publishingHouses = _unitOfWork.PublishingHousesRepository.Get(
-                orderBy: q => q.OrderBy(d => d.Name)
-            );
-            ViewBag.PublishingHouseId = new SelectList(publishingHouses, "Id", "Name", selectedPublishingHouse);
-        }
-
-        // GET: Books/Delete/5
-        public ActionResult Delete(int id)
-        {
-            Book? book = _unitOfWork.BooksRepository.GetByID(id);
-            if (book == null)
-                return Redirect("/Home/Error");
-
-            PublishingHouse? ph = _unitOfWork.PublishingHousesRepository.GetByID(book.PublishingHouseId);
-            if(ph == null)
-                return Redirect("/Home/Error");
-
-            ViewBag.PublishingHouseName = ph.Name;
-            return View(book);
-        }
-
-        // POST: Books/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Book? book = _unitOfWork.BooksRepository.GetByID(id);
-            _unitOfWork.BooksRepository.Delete(id);
-            _unitOfWork.Save();
-            return RedirectToAction(nameof(Index));
+            return NoContent();
         }
 
         private bool BookExists(int id)
         {
-          return _unitOfWork.BooksRepository.GetByID(id) != null;
-        }
+            return (_context.Books?.Any(e => e.Id == id)).GetValueOrDefault();
+        }*/
     }
 }

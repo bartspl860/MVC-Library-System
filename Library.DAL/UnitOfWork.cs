@@ -2,59 +2,65 @@
 
 namespace Library.DAL
 {
-    public class UnitOfWork : IDisposable
+    public class UnitOfWork : IUnitOfWork, IDisposable
     {
-        private DbLibraryContext _dbLibraryContext = new DbLibraryContext();
-        private Repository<Book>? booksRepository;
-        private Repository<PublishingHouse>? publishingHousesRepository;
-        private Repository<Author>? authorsRepository;
-        private Repository<Reader>? readersRepository;
-        private Repository<Borrow>? borrowsRepository;
+        private DbLibraryContext _dbLibraryContext;
+        private IBookRepository? booksRepository;
+        private IPublishingHouseRepository? publishingHousesRepository;
+        private IAuthorRepository? authorsRepository;
+        private IReaderRepository? readersRepository;
+        private IBorrowRepository? borrowsRepository;
 
-        public Repository<Book> BooksRepository { 
+        public UnitOfWork(DbLibraryContext dbLibraryContext)
+        {
+            _dbLibraryContext = dbLibraryContext;
+        }
+
+        public IBookRepository BooksRepository
+        {
             get {
                 if (booksRepository == null)
-                    booksRepository = new Repository<Book>(_dbLibraryContext);
-                return booksRepository;
+                    booksRepository = new BookRepository(_dbLibraryContext);
+                return this.booksRepository;
             } 
         }
 
-        public Repository<PublishingHouse> PublishingHousesRepository
+        public IPublishingHouseRepository PublishingHousesRepository
         {
             get
             {
                 if (publishingHousesRepository == null)
-                    publishingHousesRepository = new Repository<PublishingHouse>(_dbLibraryContext);
+                    publishingHousesRepository = new PublishingHouseRepository(_dbLibraryContext);
                 return publishingHousesRepository;
             }
         }
 
-        public Repository<Author> AuthorsRepository
+        public IAuthorRepository AuthorsRepository
         {
             get
             {
                 if (authorsRepository == null)
-                    authorsRepository = new Repository<Author>(_dbLibraryContext);
+                    authorsRepository = new AuthorRepository(_dbLibraryContext);
                 return authorsRepository;
             }
         }
 
-        public Repository<Reader> ReadersRepository
+        public IReaderRepository ReadersRepository
         {
             get
             {
                 if (readersRepository == null)
-                    readersRepository = new Repository<Reader>(_dbLibraryContext);
+                    readersRepository = new ReaderRepository(_dbLibraryContext);
                 return readersRepository;
             }
         }
 
-        public Repository<Borrow> BorrowsRepository
+        public IBorrowRepository BorrowsRepository
         {
             get
             {
                 if (borrowsRepository == null)
-                    borrowsRepository = new Repository<Borrow>(_dbLibraryContext);
+                    borrowsRepository = new BorrowRepository(_dbLibraryContext);
                 return borrowsRepository;
             }
         }
