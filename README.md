@@ -20,6 +20,24 @@
   <li>Wypożyczanie i zwracanie książek</li>
  </ul>
  
+ ## Przypadki użycia
+ <h3>Operacje GET na obiektach w bazie:</h3>
+ <ul>
+  <li>Pobranie listy wszystkich książkek dostępnych w bibliotece</li>
+  <li>Pobranie listy wszystkich autorów książek dostępnych w bibliotece</li>
+  <li>Pobranie listy wszystkich czytelników (klientów) biblioteki</li>
+  <li>Pobranie listy wszystkich wydawnictw książek dostępnych w bibliotece</li>
+  <li>Pobranie informacji o książkach o danym tytule</li>
+  <li>Pobranie informacji o książce za pomocą id</li>
+  <li>Pobranie informacji o autorze i jego książkach znajdujących się w bibliotece</li>
+  <li>Pobranie informacji o wypożyczeniach</li>
+ </ul>
+ <h3>Operacje POST na obiektach w bazie:</h3>
+  <ul>
+  <li>Dodanie nowej książki</li>
+  <li></li>
+ </ul>
+ 
  ## Funkcjonalności dla administratora
  <ul>
   <li>Tworzenie, czytanie, aktualizowanie i usuwanie (CRUD), każdej encji w bazie danych za pomocą interfejsu graficznego</li>
