@@ -30,7 +30,7 @@ namespace Library.DAL
 
         public IEnumerable<Book> GetAllBooks()
         {
-            return _context.Books.ToList();
+            return _context.Books.Include(books => books.Authors).ToList();
         }
 
         public Book? GetBook(int id)
