@@ -4,8 +4,9 @@ namespace Library.BLL
 {
     public interface IBookService
     {
-        IEnumerable<Book> GetBooks();
         IEnumerable<Book> GetBooksFilter(string title);
+        IEnumerable<Book> GetBooks(string title);
+        object GetBorrowsByTitle(string title);
         Book FindBook(int id);
         void AddBook(Book book);
         bool UpdateBook(Book book);

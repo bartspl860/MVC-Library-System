@@ -1,4 +1,5 @@
 ﻿using Library.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace Library.DAL
 {    
@@ -34,6 +35,11 @@ namespace Library.DAL
 
         public IEnumerable<Reader> GetAllReaders() {
             return _context.Readers.ToList();
+        }
+
+        public IQueryable<Book> GetBorrowedBooks()
+        {
+            return _context.Readers.Include(r => r.BorrowedBooks).SelectMany(r => r.BorrowedBooks);
         }
 
         public void Dispose()

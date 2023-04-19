@@ -25,6 +25,21 @@ namespace Library.BLL
                 .Count();
         }
 
+        public object GetBorrowsByTitle(string title)
+        {
+            var books = this.GetBooks(title);
+            var borrowedBooks = _unitOfWork.ReadersRepository.GetBorrowedBooks().Where(b => b.Title == title).ToList();
+
+            var bookInfo = new
+            {
+                Title = title,
+                BorrowedBooks = borrowedBooks,
+                FreeBooks = books.Except(borrowedBooks).ToList()
+            };
+
+            return bookInfo;
+        }
+
         public bool UpdateBook(Book book)
         {
             try

@@ -27,10 +27,11 @@
   <li>Pobranie listy wszystkich autorów książek dostępnych w bibliotece</li>
   <li>Pobranie listy wszystkich czytelników (klientów) biblioteki</li>
   <li>Pobranie listy wszystkich wydawnictw książek dostępnych w bibliotece</li>
-  <li>Pobranie informacji o książkach o danym tytule</li>
   <li>Pobranie informacji o książce za pomocą id</li>
   <li>Pobranie informacji o autorze i jego książkach znajdujących się w bibliotece</li>
   <li>Pobranie informacji o wypożyczeniach</li>
+  <li>Pobranie informacji o książkach o danym tytule, dostajemy w tym przypadku wszystkie książki o danym tytule</li>
+  <li>Pobranie informacji o ilości dostępnych książek o danym tytule</li>
  </ul>
  <h3>Operacje POST na obiektach w bazie:</h3>
   <ul>

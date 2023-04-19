@@ -13,5 +13,6 @@ namespace Library.DAL
         public void PutReader(Reader reader);
         public void DeleteReader(int id);
         public IEnumerable<Reader> GetAllReaders();
+        public IQueryable<Book> GetBorrowedBooks();
     }
 }

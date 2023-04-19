@@ -9,6 +9,7 @@ using Library.Model;
 using Library.BLL;
 using Library.DAL;
 using Microsoft.Identity.Client;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace Library.MVC.Controllers
 {
@@ -42,7 +43,12 @@ namespace Library.MVC.Controllers
             return Ok(_bookService.CountBooks());
         }
 
-        
+        [HttpGet("Borrowed/{title}")]
+        public IActionResult GetBorrowedBooksByTitle(string title)
+        {
+            return Ok(_bookService.GetBorrowsByTitle(title));
+        }
+
         // GET: api/Books/5
         [HttpGet("{id}")]
         public IActionResult GetBook(int id)
