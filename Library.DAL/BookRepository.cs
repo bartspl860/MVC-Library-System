@@ -30,12 +30,19 @@ namespace Library.DAL
 
         public IEnumerable<Book> GetAllBooks()
         {
-            return _context.Books.Include(books => books.Authors).ToList();
+            return _context.Books
+                .Include(books => books.Authors)
+                .Include(books => books.PublishingHouse)
+                .ToList();
         }
 
         public Book? GetBook(int id)
         {
-            return _context.Books.Where(r => r.Id == id).FirstOrDefault();
+            return _context.Books
+                .Where(r => r.Id == id)
+                .Include(books => books.Authors)
+                .Include(books => books.PublishingHouse)
+                .FirstOrDefault();
         }
 
         public void UpdateBook(Book book)

@@ -21,7 +21,6 @@ builder.Services.AddScoped<IUnitOfWork>(provider =>
 
 builder.Services.AddScoped<BooksController>();
 builder.Services.AddScoped<IBookService, BookService>();
-builder.Services.AddScoped<IPublishingHouseService, PublishingHouseService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 var app = builder.Build();

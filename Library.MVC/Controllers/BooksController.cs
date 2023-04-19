@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Library.Model;
 using Library.BLL;
 using Library.DAL;
+using Microsoft.Identity.Client;
 
 namespace Library.MVC.Controllers
 {
@@ -16,12 +17,10 @@ namespace Library.MVC.Controllers
     public class BooksController : ControllerBase
     {
         private readonly IBookService _bookService;
-        private readonly IPublishingHouseService _publishingHouseService;
 
-        public BooksController(IBookService bookService, IPublishingHouseService publishingHouseService)
+        public BooksController(IBookService bookService)
         {
-            _bookService = bookService;
-            _publishingHouseService = publishingHouseService;
+            _bookService = bookService;            
         }
 
         // GET: api/Books
@@ -32,15 +31,17 @@ namespace Library.MVC.Controllers
             if(title == null)
                 books = _bookService.GetBooks();
             else
-                books = _bookService.GetBooks(title);
-
-            foreach(var book in books)
-            {
-                book.PublishingHouse = _publishingHouseService.FindPublisher(book.PublishingHouseId);
-            }            
+                books = _bookService.GetBooks(title);          
 
             return Ok(books);
         }
+
+        [HttpGet("Count")]
+        public IActionResult CountBooks()
+        {
+            return Ok(_bookService.CountBooks());
+        }
+
         
         // GET: api/Books/5
         [HttpGet("{id}")]
@@ -51,11 +52,9 @@ namespace Library.MVC.Controllers
             if (book == null)
                 return NotFound();
 
-            book.PublishingHouse = _publishingHouseService.FindPublisher(book.PublishingHouseId);
-
             return Ok(book);
         }
-        /*
+        
         // PUT: api/Books/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -66,7 +65,7 @@ namespace Library.MVC.Controllers
                 return BadRequest();
             }
 
-            var existingBook = _unitOfWork.BooksRepository.GetBook(id);
+            var existingBook = _bookService.FindBook(id);
 
             if (existingBook == null)
             {
@@ -76,21 +75,22 @@ namespace Library.MVC.Controllers
             existingBook.Title = book.Title;
             existingBook.Authors = book.Authors;
             existingBook.PublishingHouse = book.PublishingHouse;
-            existingBook.PublishingHouseId = book.PublishingHouseId;                        
+            existingBook.PublishingHouseId = book.PublishingHouseId;
 
-            _unitOfWork.BooksRepository.UpdateBook(existingBook);
+            if (!_bookService.UpdateBook(existingBook)){
+                return NotFound();
+            }
 
-            return NoContent();
-        }
-        */
+            return Ok();
+        }      
         // POST: api/Books
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public ActionResult<Book> PostBook(Book book2)
+        public ActionResult<Book> PostBook(Book book)
         {
-            _bookService.AddBook(book2);
+            _bookService.AddBook(book);
 
-            return CreatedAtAction("AddBook", new { id = book2.Id }, book2);
+            return CreatedAtAction("AddBook", new { id = book.Id }, book);
         }
         /*
         // DELETE: api/Books/5

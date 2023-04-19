@@ -18,6 +18,24 @@ namespace Library.BLL
                 .GetBook(id);
         }
 
+        public int CountBooks()
+        {
+            return _unitOfWork.BooksRepository.GetAllBooks().Count();
+        }
+
+        public bool UpdateBook(Book book)
+        {
+            try
+            {
+                _unitOfWork.BooksRepository.UpdateBook(book);
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+            return true;            
+        }
+
         public void AddBook(Book book)
         {
             _unitOfWork.BooksRepository.AddBook(book);
