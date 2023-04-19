@@ -31,7 +31,7 @@
   <li>Pobranie informacji o autorze i jego książkach znajdujących się w bibliotece</li>
   <li>Pobranie informacji o wypożyczeniach</li>
   <li>Pobranie informacji o książkach o danym tytule, dostajemy w tym przypadku wszystkie książki o danym tytule</li>
-  <li>Pobranie informacji czy książka o danym tytule jest w tym momencie przez kogoś wypożyczona</li>
+  <li>Pobranie informacji o ilości dostępnych książek o danym tytule</li>
  </ul>
  <h3>Operacje POST na obiektach w bazie:</h3>
   <ul>
