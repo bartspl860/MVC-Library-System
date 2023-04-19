@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Library.Model
@@ -14,6 +15,7 @@ namespace Library.Model
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
-        public ICollection<Book> Books { get; set; }
+        [JsonIgnore]
+        public ICollection<Book>? Books { get; set; }
     }
 }

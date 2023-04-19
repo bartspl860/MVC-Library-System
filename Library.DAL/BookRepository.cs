@@ -44,6 +44,12 @@ namespace Library.DAL
             _context.SaveChanges();
         }
 
+        public void AddBook(Book book)
+        {
+            _context.Add(book);
+            _context.SaveChanges();
+        }
+
         public void Dispose()
         {
             Dispose(true);

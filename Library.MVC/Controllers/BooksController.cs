@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Library.Model;
+using Library.BLL;
 using Library.DAL;
 
 namespace Library.MVC.Controllers
@@ -14,32 +15,47 @@ namespace Library.MVC.Controllers
     [ApiController]
     public class BooksController : ControllerBase
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IBookService _bookService;
+        private readonly IPublishingHouseService _publishingHouseService;
 
-        public BooksController(IUnitOfWork unitOfWork)
+        public BooksController(IBookService bookService, IPublishingHouseService publishingHouseService)
         {
-            _unitOfWork = unitOfWork;
+            _bookService = bookService;
+            _publishingHouseService = publishingHouseService;
         }
 
         // GET: api/Books
         [HttpGet]
-        public IEnumerable<Book> GetBooks()
+        public IActionResult GetBooks([FromQuery(Name ="Title")] string? title)
         {
-            return _unitOfWork.BooksRepository.GetAllBooks();
+            IEnumerable<Book> books;
+            if(title == null)
+                books = _bookService.GetBooks();
+            else
+                books = _bookService.GetBooks(title);
+
+            foreach(var book in books)
+            {
+                book.PublishingHouse = _publishingHouseService.FindPublisher(book.PublishingHouseId);
+            }            
+
+            return Ok(books);
         }
         
         // GET: api/Books/5
         [HttpGet("{id}")]
-        public ActionResult<Book> GetBook(int id)
+        public IActionResult GetBook(int id)
         {
-            var book = _unitOfWork.BooksRepository.GetBook(id);
+            var book = _bookService.FindBook(id);
 
             if (book == null)
                 return NotFound();
 
-            return book;
+            book.PublishingHouse = _publishingHouseService.FindPublisher(book.PublishingHouseId);
+
+            return Ok(book);
         }
-        
+        /*
         // PUT: api/Books/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -66,45 +82,32 @@ namespace Library.MVC.Controllers
 
             return NoContent();
         }
-        /*
+        */
         // POST: api/Books
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Book>> PostBook(Book book)
+        public ActionResult<Book> PostBook(Book book2)
         {
-          if (_context.Books == null)
-          {
-              return Problem("Entity set 'DbLibraryContext.Books'  is null.");
-          }
-            _context.Books.Add(book);
-            await _context.SaveChangesAsync();
+            _bookService.AddBook(book2);
 
-            return CreatedAtAction("GetBook", new { id = book.Id }, book);
+            return CreatedAtAction("AddBook", new { id = book2.Id }, book2);
         }
-
+        /*
         // DELETE: api/Books/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBook(int id)
         {
-            if (_context.Books == null)
-            {
-                return NotFound();
-            }
-            var book = await _context.Books.FindAsync(id);
+
+            var book = _unitOfWork.BooksRepository.GetBook(id);
             if (book == null)
             {
                 return NotFound();
             }
 
-            _context.Books.Remove(book);
-            await _context.SaveChangesAsync();
+            _unitOfWork.BooksRepository.DeleteBook(id);
 
             return NoContent();
         }
-
-        private bool BookExists(int id)
-        {
-            return (_context.Books?.Any(e => e.Id == id)).GetValueOrDefault();
-        }*/
+        */
     }
 }

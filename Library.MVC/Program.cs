@@ -1,14 +1,28 @@
+using Library.BLL;
 using Library.DAL;
 using Library.Model;
 using Library.MVC.Controllers;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<DbLibraryContext>();
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+builder.Services.AddDbContextPool<DbLibraryContext>(options =>
+    options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Library;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False")
+);
+
+builder.Services.AddScoped<IUnitOfWork>(provider =>
+{
+    var dbContext = provider.GetService<DbLibraryContext>();
+    return new UnitOfWork(dbContext);
+});
+
 builder.Services.AddScoped<BooksController>();
+builder.Services.AddScoped<IBookService, BookService>();
+builder.Services.AddScoped<IPublishingHouseService, PublishingHouseService>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 var app = builder.Build();
 

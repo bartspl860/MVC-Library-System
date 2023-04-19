@@ -9,9 +9,10 @@ namespace Library.Model
         public DbSet<Reader> Readers { get; set; }
         public DbSet<PublishingHouse> PublishingHouses { get; set; }
         public DbSet<Borrow> Borrows { get; set; }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+
+        public DbLibraryContext(DbContextOptions<DbLibraryContext> options) : base(options)
         {
-            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Library;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
+            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
