@@ -20,14 +20,17 @@ namespace Library.BLL
 
         public int CountBooks()
         {
-            return _unitOfWork.BooksRepository.GetAllBooks().Count();
+            return _unitOfWork.BooksRepository
+                .GetAllBooks()
+                .Count();
         }
 
         public bool UpdateBook(Book book)
         {
             try
             {
-                _unitOfWork.BooksRepository.UpdateBook(book);
+                _unitOfWork.BooksRepository
+                    .UpdateBook(book);
             }
             catch(Exception ex)
             {
@@ -38,7 +41,8 @@ namespace Library.BLL
 
         public void AddBook(Book book)
         {
-            _unitOfWork.BooksRepository.AddBook(book);
+            _unitOfWork.BooksRepository
+                .AddBook(book);
             _unitOfWork.Save();
         }
 
@@ -48,7 +52,7 @@ namespace Library.BLL
                 .GetAllBooks();
         }
 
-        public IEnumerable<Book> GetBooks(string title)
+        public IEnumerable<Book> GetBooksFilter(string title)
         {
             return _unitOfWork.BooksRepository
                 .GetAllBooks()

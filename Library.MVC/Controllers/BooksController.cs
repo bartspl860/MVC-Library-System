@@ -31,7 +31,7 @@ namespace Library.MVC.Controllers
             if(title == null)
                 books = _bookService.GetBooks();
             else
-                books = _bookService.GetBooks(title);          
+                books = _bookService.GetBooksFilter(title);          
 
             return Ok(books);
         }
