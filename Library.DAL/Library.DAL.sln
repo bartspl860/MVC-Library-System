@@ -11,7 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.MVC", "..\Library.M
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.BLL", "..\Library.BLL\Library.BLL.csproj", "{498FA5BF-D072-48B9-A4FA-20A019810E8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Test.MVC", "..\Library.Test.MVC\Library.Test.MVC.csproj", "{2AF838EF-06DD-49C1-A930-8197BBECB9A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Test.MVC", "..\Library.Test.MVC\Library.Test.MVC.csproj", "{2AF838EF-06DD-49C1-A930-8197BBECB9A4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{548C8B4F-ADC3-48B2-B873-09FE4A9CFAF5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.xUnit", "..\Library.xUnit\Library.xUnit.csproj", "{C38C93E5-F2DB-45AA-8CCC-0B0E88E44860}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,9 +87,24 @@ Global
 		{2AF838EF-06DD-49C1-A930-8197BBECB9A4}.Release|x64.Build.0 = Release|Any CPU
 		{2AF838EF-06DD-49C1-A930-8197BBECB9A4}.Release|x86.ActiveCfg = Release|Any CPU
 		{2AF838EF-06DD-49C1-A930-8197BBECB9A4}.Release|x86.Build.0 = Release|Any CPU
+		{C38C93E5-F2DB-45AA-8CCC-0B0E88E44860}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C38C93E5-F2DB-45AA-8CCC-0B0E88E44860}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C38C93E5-F2DB-45AA-8CCC-0B0E88E44860}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C38C93E5-F2DB-45AA-8CCC-0B0E88E44860}.Debug|x64.Build.0 = Debug|Any CPU
+		{C38C93E5-F2DB-45AA-8CCC-0B0E88E44860}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C38C93E5-F2DB-45AA-8CCC-0B0E88E44860}.Debug|x86.Build.0 = Debug|Any CPU
+		{C38C93E5-F2DB-45AA-8CCC-0B0E88E44860}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C38C93E5-F2DB-45AA-8CCC-0B0E88E44860}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C38C93E5-F2DB-45AA-8CCC-0B0E88E44860}.Release|x64.ActiveCfg = Release|Any CPU
+		{C38C93E5-F2DB-45AA-8CCC-0B0E88E44860}.Release|x64.Build.0 = Release|Any CPU
+		{C38C93E5-F2DB-45AA-8CCC-0B0E88E44860}.Release|x86.ActiveCfg = Release|Any CPU
+		{C38C93E5-F2DB-45AA-8CCC-0B0E88E44860}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C38C93E5-F2DB-45AA-8CCC-0B0E88E44860} = {548C8B4F-ADC3-48B2-B873-09FE4A9CFAF5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {52FA1627-80ED-4127-BFD1-2FE358CC9465}

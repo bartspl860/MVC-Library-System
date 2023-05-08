@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Library.DAL
 {
-    internal class AuthorRepository : IAuthorRepository, IDisposable
+    public class AuthorRepository : IAuthorRepository, IDisposable
     {
         private readonly DbLibraryContext _context;
 

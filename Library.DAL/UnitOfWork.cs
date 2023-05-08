@@ -5,11 +5,11 @@ namespace Library.DAL
     public class UnitOfWork : IUnitOfWork, IDisposable
     {
         private DbLibraryContext _dbLibraryContext;
-        private IBookRepository? booksRepository;
-        private IPublishingHouseRepository? publishingHousesRepository;
-        private IAuthorRepository? authorsRepository;
-        private IReaderRepository? readersRepository;
-        private IBorrowRepository? borrowsRepository;
+        private IBookRepository? _booksRepository;
+        private IPublishingHouseRepository? _publishingHousesRepository;
+        private IAuthorRepository? _authorsRepository;
+        private IReaderRepository? _readersRepository;
+        private IBorrowRepository? _borrowsRepository;
 
         public UnitOfWork(DbLibraryContext dbLibraryContext)
         {
@@ -18,51 +18,32 @@ namespace Library.DAL
 
         public IBookRepository BooksRepository
         {
-            get {
-                if (booksRepository == null)
-                    booksRepository = new BookRepository(_dbLibraryContext);
-                return this.booksRepository;
-            } 
+            get => this._booksRepository;
+            set => this._booksRepository = value;
         }
 
         public IPublishingHouseRepository PublishingHousesRepository
         {
-            get
-            {
-                if (publishingHousesRepository == null)
-                    publishingHousesRepository = new PublishingHouseRepository(_dbLibraryContext);
-                return publishingHousesRepository;
-            }
+            get => this._publishingHousesRepository;
+            set => this._publishingHousesRepository = value;
         }
 
         public IAuthorRepository AuthorsRepository
         {
-            get
-            {
-                if (authorsRepository == null)
-                    authorsRepository = new AuthorRepository(_dbLibraryContext);
-                return authorsRepository;
-            }
+            get => this._authorsRepository; 
+            set => this._authorsRepository = value;
         }
 
         public IReaderRepository ReadersRepository
         {
-            get
-            {
-                if (readersRepository == null)
-                    readersRepository = new ReaderRepository(_dbLibraryContext);
-                return readersRepository;
-            }
+            get => this._readersRepository; 
+            set => this._readersRepository = value;
         }
 
         public IBorrowRepository BorrowsRepository
         {
-            get
-            {
-                if (borrowsRepository == null)
-                    borrowsRepository = new BorrowRepository(_dbLibraryContext);
-                return borrowsRepository;
-            }
+            get => _borrowsRepository;
+            set => this._borrowsRepository = value;
         }
         
         public void Save()

@@ -28,7 +28,11 @@ namespace Library.BLL
         public object GetBorrowsByTitle(string title)
         {
             var books = this.GetBooksFilter(title);
-            var borrowedBooks = _unitOfWork.ReadersRepository.GetBorrowedBooks().Where(b => b.Title == title).ToList();
+            var borrowedBooks = _unitOfWork
+                .ReadersRepository
+                .GetBorrowedBooks()
+                .Where(b => b.Title == title)
+                .ToList();
 
             var bookInfo = new
             {
