@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore.InMemory;
 using Library.DAL;
 using System.Xml.Linq;
 using Microsoft.Extensions.DependencyInjection;
+using Library.xUnit.DummyRepos;
 
 namespace Library.xUnit.RepoTests
 {    
@@ -27,7 +28,7 @@ namespace Library.xUnit.RepoTests
         [Fact]
         public void AddBookTest()
         {
-            var testDb = GetDbLibraryContext("T");
+            var testDb = GetDbLibraryContext("BookDb");
 
             var bookrepo = new BookRepository(testDb);
 
@@ -35,5 +36,14 @@ namespace Library.xUnit.RepoTests
 
             Assert.Single(testDb.Books);
         }
+
+        [Fact]
+        public void DummyBookRepoTest()
+        {
+            Action dummyActCreate = () => new DummyBookRepository(null);
+
+            Assert.Throws<ArgumentNullException>(dummyActCreate);
+        }
+
     }
 }
