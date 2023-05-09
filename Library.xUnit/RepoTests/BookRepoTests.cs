@@ -5,6 +5,7 @@ using Library.DAL;
 using System.Xml.Linq;
 using Microsoft.Extensions.DependencyInjection;
 using Library.xUnit.DummyRepos;
+using Library.xUnit.StubRepos;
 
 namespace Library.xUnit.RepoTests
 {    
@@ -45,5 +46,22 @@ namespace Library.xUnit.RepoTests
             Assert.Throws<ArgumentNullException>(dummyActCreate);
         }
 
+        [Fact]
+        public void StubBookTest()
+        {
+            StubBookRepository booksRepo = new StubBookRepository();
+            Book? book = booksRepo.GetBook(0);
+
+            Assert.IsType<Book>(book);
+        }
+
+        [Fact]
+        public void StubBooksTest()
+        {
+            StubBookRepository booksRepo = new StubBookRepository();
+            var booksList = booksRepo.GetAllBooks();
+
+            Assert.IsAssignableFrom<IEnumerable<Book>>(booksList);
+        }
     }
 }
