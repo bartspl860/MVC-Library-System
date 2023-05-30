@@ -1,0 +1,34 @@
+﻿@using Library.Model;
+
+@{IEnumerable<Book> books = ViewBag.Books;}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Author(s)</th>
+            <th scope="col">Publishing House</th>
+        </tr>
+    </thead>
+    <tbody>
+    @{
+        int i = 0;
+        foreach (var book in books)
+        {
+
+            <tr>
+                <th scope="row">@(++i)</th>
+                <td>@book.Title</td>
+                <td>
+                @foreach (var author in book.Authors)
+                {
+                    <span>@author.Name @author.Surname</span>
+                }
+                </td>
+                <td>@book.PublishingHouse.Name</td>
+            </tr>            
+        }        
+    }
+    </tbody>
+</table>

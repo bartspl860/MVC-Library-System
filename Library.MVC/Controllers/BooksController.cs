@@ -26,7 +26,7 @@ namespace Library.MVC.Controllers
 
         // GET: api/Books
         [HttpGet]
-        public IActionResult GetBooks([FromQuery(Name ="Title")] string? title)
+        public IActionResult GetBooks([FromQuery(Name ="Title")] string? title = null)
         {
             IEnumerable<Book> books;
             if(title == null)
@@ -66,11 +66,6 @@ namespace Library.MVC.Controllers
         [HttpPut("{id}")]
         public IActionResult PutBook(int id, Book book)
         {
-            if (id != book.Id)
-            {
-                return BadRequest();
-            }
-
             var existingBook = _bookService.FindBook(id);
 
             if (existingBook == null)
@@ -83,9 +78,7 @@ namespace Library.MVC.Controllers
             existingBook.PublishingHouse = book.PublishingHouse;
             existingBook.PublishingHouseId = book.PublishingHouseId;
 
-            if (!_bookService.UpdateBook(existingBook)){
-                return NotFound();
-            }
+            _bookService.UpdateBook(existingBook);
 
             return Ok();
         }      

@@ -7,13 +7,12 @@ using System.Threading.Tasks;
 
 namespace Library.DAL
 {
-    public interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork
     {        
         IBookRepository BooksRepository { get; }
         IPublishingHouseRepository PublishingHousesRepository { get; }
         IAuthorRepository AuthorsRepository { get; }
         IReaderRepository ReadersRepository { get; }
         IBorrowRepository BorrowsRepository { get; }
-        void Save();
     }
 }

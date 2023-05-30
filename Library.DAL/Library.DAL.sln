@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Test.MVC", "..\Libr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{548C8B4F-ADC3-48B2-B873-09FE4A9CFAF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.xUnit", "..\Library.xUnit\Library.xUnit.csproj", "{C38C93E5-F2DB-45AA-8CCC-0B0E88E44860}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.xUnit", "..\Library.xUnit\Library.xUnit.csproj", "{C38C93E5-F2DB-45AA-8CCC-0B0E88E44860}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

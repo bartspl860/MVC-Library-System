@@ -49,7 +49,7 @@ namespace Library.BLL
             try
             {
                 _unitOfWork.BooksRepository
-                    .UpdateBook(book);
+                    .UpdateBook(book);                
             }
             catch(Exception ex)
             {
@@ -62,7 +62,6 @@ namespace Library.BLL
         {
             _unitOfWork.BooksRepository
                 .AddBook(book);
-            _unitOfWork.Save();
         }
 
         public IEnumerable<Book> GetBooks()

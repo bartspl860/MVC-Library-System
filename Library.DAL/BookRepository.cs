@@ -26,6 +26,7 @@ namespace Library.DAL
             {
                 _context.Books.Remove(book);
             }
+            _context.SaveChanges();
         }
 
         public IEnumerable<Book> GetAllBooks()

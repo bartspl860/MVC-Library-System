@@ -10,11 +10,11 @@ namespace Library.Model
         [Key]
         public int Id { get; set; }
         [Required, MaxLength(50)]
-        public string Title { get; set; }
+        public string? Title { get; set; }
         [Required]
-        public ICollection<Author> Authors { get; set; }
+        public ICollection<Author>? Authors { get; set; }
         [Required]
-        public PublishingHouse PublishingHouse { get; set; }
+        public PublishingHouse? PublishingHouse { get; set; }
         public int PublishingHouseId { get; set; }
     }
 }

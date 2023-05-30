@@ -27,6 +27,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Library.BLL\Library.BLL.csproj" />
+    <ProjectReference Include="..\Library.MVC\Library.MVC.csproj" />
   </ItemGroup>
 
 </Project>

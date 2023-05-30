@@ -22,7 +22,7 @@ builder.Services.AddScoped<IBorrowRepository, BorrowRepository>();
 builder.Services.AddScoped<IUnitOfWork>(provider =>
 {
     var dbContext = provider.GetService<DbLibraryContext>();
-    var unitofwork = new UnitOfWork(dbContext);
+    var unitofwork = new UnitOfWork();
 
     unitofwork.BooksRepository = new BookRepository(dbContext);
     unitofwork.PublishingHousesRepository = new PublishingHouseRepository(dbContext);
@@ -34,8 +34,9 @@ builder.Services.AddScoped<IUnitOfWork>(provider =>
 });
 
 
-
 builder.Services.AddScoped<BooksController>();
+builder.Services.AddScoped<IBookService, BookService>();
+builder.Services.AddScoped<HomeController>();
 builder.Services.AddScoped<IBookService, BookService>();
 
 

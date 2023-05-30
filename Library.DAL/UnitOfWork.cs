@@ -2,19 +2,13 @@
 
 namespace Library.DAL
 {
-    public class UnitOfWork : IUnitOfWork, IDisposable
+    public class UnitOfWork : IUnitOfWork
     {
-        private DbLibraryContext _dbLibraryContext;
         private IBookRepository? _booksRepository;
         private IPublishingHouseRepository? _publishingHousesRepository;
         private IAuthorRepository? _authorsRepository;
         private IReaderRepository? _readersRepository;
         private IBorrowRepository? _borrowsRepository;
-
-        public UnitOfWork(DbLibraryContext dbLibraryContext)
-        {
-            _dbLibraryContext = dbLibraryContext;
-        }
 
         public IBookRepository BooksRepository
         {
@@ -44,27 +38,6 @@ namespace Library.DAL
         {
             get => _borrowsRepository;
             set => this._borrowsRepository = value;
-        }
-        
-        public void Save()
-        {
-            _dbLibraryContext.SaveChanges();
-        }
-
-        private bool disposed = false;
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposed && disposing)
-            {
-              _dbLibraryContext.Dispose();
-            }
-            disposed = true;
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
         }
     }
 }

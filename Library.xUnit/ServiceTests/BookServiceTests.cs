@@ -11,7 +11,7 @@ namespace Library.xUnit.RepoTests
         [Fact]
         public void AddBookTest()
         {
-            var unitofwork = new UnitOfWork(null);
+            var unitofwork = new UnitOfWork();
 
             var book = new Book()
             {
@@ -30,7 +30,7 @@ namespace Library.xUnit.RepoTests
         [Fact]
         public void FindBookTest()
         {
-            var unitofwork = new UnitOfWork(null);
+            var unitofwork = new UnitOfWork();
 
             var book = new Book()
             {
@@ -51,7 +51,7 @@ namespace Library.xUnit.RepoTests
         [Fact]
         public void CountBooksTest()
         {
-            var unitofwork = new UnitOfWork(null);
+            var unitofwork = new UnitOfWork();
 
             var book = new Book()
             {
