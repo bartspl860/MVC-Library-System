@@ -19,6 +19,12 @@ namespace Library.MVC.Controllers
             return View();
         }
 
+        public ActionResult NumberOfBooks()
+        {
+            ViewBag.Count = _bookService.CountBooks();
+            return View();
+        }
+
         // GET: HomeController/Details/5
         public ActionResult Details(int id)
         {
