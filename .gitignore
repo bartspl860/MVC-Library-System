@@ -294,3 +294,9 @@ Library.Model/obj/Library.Model.csproj.nuget.g.props
 Library.Model/obj/project.assets.json
 Library.Model/obj/project.nuget.cache
 Library.Model/obj/project.nuget.cache
+Library.Model/obj/Debug/net6.0/Library.Model.GeneratedMSBuildEditorConfig.editorconfig
+Library.Model/obj/Debug/net6.0/Library.Model.csproj.AssemblyReference.cache
+Library.Model/obj/Debug/net6.0/Library.Model.assets.cache
+Library.DAL/obj/Debug/net6.0/Library.DAL.GeneratedMSBuildEditorConfig.editorconfig
+Library.DAL/obj/Debug/net6.0/Library.DAL.csproj.AssemblyReference.cache
+Library.DAL/obj/Debug/net6.0/Library.DAL.assets.cache
