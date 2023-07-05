@@ -5,6 +5,7 @@ body{
 
 .row{
     margin-bottom: 0px;
+    margin-right: 0px !important;
 }
 .col{
     padding: 0px !important;

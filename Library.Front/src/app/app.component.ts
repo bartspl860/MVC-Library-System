@@ -11,6 +11,5 @@ export class AppComponent implements OnInit{
   ngOnInit(): void {
     const parallaxElems = document.querySelectorAll('.parallax-container');
     M.Parallax.init(parallaxElems);
-  }
-  
+  }  
 }

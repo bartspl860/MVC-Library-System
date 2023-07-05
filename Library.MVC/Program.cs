@@ -39,6 +39,16 @@ builder.Services.AddScoped<IBookService, BookService>();
 builder.Services.AddScoped<HomeController>();
 builder.Services.AddScoped<IBookService, BookService>();
 
+builder.Services.AddCors(opt =>
+{
+    opt.AddDefaultPolicy(bld =>
+    {
+        bld.AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+    });
+});
+
 
 var app = builder.Build();
 
@@ -50,6 +60,8 @@ if (!app.Environment.IsDevelopment())
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseCors();
 
 app.UseAuthorization();
 

@@ -3531,19 +3531,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\gplay\\.nuget\\packages\\": {}
+    "C:\\Users\\bartl\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\GitHub\\Polsl_Sem6\\Taiib_Project\\MVC-Library-System\\Library.DAL\\Library.DAL.csproj",
+      "projectUniqueName": "D:\\Dokumenty\\Repositories\\MVC Library System\\Library.DAL\\Library.DAL.csproj",
       "projectName": "Library.DAL",
-      "projectPath": "F:\\GitHub\\Polsl_Sem6\\Taiib_Project\\MVC-Library-System\\Library.DAL\\Library.DAL.csproj",
-      "packagesPath": "C:\\Users\\gplay\\.nuget\\packages\\",
-      "outputPath": "F:\\GitHub\\Polsl_Sem6\\Taiib_Project\\MVC-Library-System\\Library.DAL\\obj\\",
+      "projectPath": "D:\\Dokumenty\\Repositories\\MVC Library System\\Library.DAL\\Library.DAL.csproj",
+      "packagesPath": "C:\\Users\\bartl\\.nuget\\packages\\",
+      "outputPath": "D:\\Dokumenty\\Repositories\\MVC Library System\\Library.DAL\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\gplay\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\bartl\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3557,8 +3557,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "F:\\GitHub\\Polsl_Sem6\\Taiib_Project\\MVC-Library-System\\Library.Model\\Library.Model.csproj": {
-              "projectPath": "F:\\GitHub\\Polsl_Sem6\\Taiib_Project\\MVC-Library-System\\Library.Model\\Library.Model.csproj"
+            "D:\\Dokumenty\\Repositories\\MVC Library System\\Library.Model\\Library.Model.csproj": {
+              "projectPath": "D:\\Dokumenty\\Repositories\\MVC Library System\\Library.Model\\Library.Model.csproj"
             }
           }
         }
@@ -3610,7 +3610,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
       }
     }
   }
