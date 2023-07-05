@@ -300,3 +300,6 @@ Library.Model/obj/Debug/net6.0/Library.Model.assets.cache
 Library.DAL/obj/Debug/net6.0/Library.DAL.GeneratedMSBuildEditorConfig.editorconfig
 Library.DAL/obj/Debug/net6.0/Library.DAL.csproj.AssemblyReference.cache
 Library.DAL/obj/Debug/net6.0/Library.DAL.assets.cache
+Library.DAL/.vs/Library.DAL/DesignTimeBuild/.dtbcache.v2
+Library.DAL/.vs/Library.DAL/v17/.suo
+Library.DAL/obj/Debug/net6.0/Library.DAL.assets.cache
