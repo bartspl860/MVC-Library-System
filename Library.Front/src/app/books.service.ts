@@ -14,4 +14,8 @@ export class BooksService {
   get() : Observable<BookResponse[]> {
     return this.http.get<BookResponse[]>(this.apiUrl);
   }
+
+  getFilter(key: string) : Observable<BookResponse[]>{
+    return this.http.get<BookResponse[]>(this.apiUrl + "?Title=" + key);
+  }
 }

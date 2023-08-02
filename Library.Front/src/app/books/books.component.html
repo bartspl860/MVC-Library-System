@@ -1,4 +1,14 @@
-<div *ngIf="!loaded" class="row">
+<div class="row">
+  <div class="col s4 offset-m4 center">    
+    <form [formGroup]="filterForm" (ngSubmit)="search()">
+      <input style="text-align: center;" id="search" type="text" class="validate" formControlName="search">
+      <label for="search">
+        <i class="material-icons prefix">find_in_page</i>
+      </label>
+    </form>    
+  </div>
+</div>
+<div *ngIf="!loaded" class="row" style="margin-top: 3vh; margin-bottom: 3vh;">
     <div class="col s12 center">
         <div class="preloader-wrapper big active">
             <div class="spinner-layer spinner-blue-only">
@@ -13,7 +23,6 @@
         </div>
     </div>
 </div>
-
 <div class="row">
     <ng-container *ngFor="let book of books; let i = index;">
       <div class="col s4">
@@ -30,7 +39,8 @@
             </p>            
           </div>
           <div class="card-action">
-            <a>Borrow</a>            
+            <a>Borrow</a>
+            <i style="float: right;" class="indigo-text text-lighten-1"> {{ book.id }}</i>      
           </div>
         </div>
       </div>
