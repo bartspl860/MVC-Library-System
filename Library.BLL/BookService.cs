@@ -80,5 +80,10 @@ namespace Library.BLL
                 .ToUpper())
                 );
         }
+
+        public void DeleteBook(int id)
+        {
+            _unitOfWork.BooksRepository.DeleteBook(id);
+        }
     }
 }

@@ -91,22 +91,22 @@ namespace Library.MVC.Controllers
 
             return CreatedAtAction("AddBook", new { id = book.Id }, book);
         }
-        /*
+        
         // DELETE: api/Books/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBook(int id)
         {
 
-            var book = _unitOfWork.BooksRepository.GetBook(id);
+            var book = _bookService.GetBooks().Where(b=>b.Id == id).FirstOrDefault();
             if (book == null)
             {
                 return NotFound();
             }
 
-            _unitOfWork.BooksRepository.DeleteBook(id);
+            _bookService.DeleteBook(book.Id);
 
-            return NoContent();
+            return Ok();
         }
-        */
+        
     }
 }
