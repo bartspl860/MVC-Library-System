@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
 using Library.Model;
 using Library.BLL;
-using Library.DAL;
-using Microsoft.Identity.Client;
-using static System.Reflection.Metadata.BlobBuilder;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Library.MVC.Controllers
 {
@@ -21,7 +14,7 @@ namespace Library.MVC.Controllers
 
         public BooksController(IBookService bookService)
         {
-            _bookService = bookService;            
+            _bookService = bookService;
         }
 
         // GET: api/Books

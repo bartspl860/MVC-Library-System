@@ -10,8 +10,6 @@ namespace Library.Model
 {
     public class AuthorBook
     {
-        [Key]
-        public int Id { get; set; }
         public ICollection<Author>? Author { get; set; }
         public ICollection<Book>? Book { get; set; }
     }

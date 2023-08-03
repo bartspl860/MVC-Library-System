@@ -35,9 +35,11 @@ builder.Services.AddScoped<IUnitOfWork>(provider =>
 
 
 builder.Services.AddScoped<BooksController>();
-builder.Services.AddScoped<IBookService, BookService>();
 builder.Services.AddScoped<HomeController>();
 builder.Services.AddScoped<IBookService, BookService>();
+
+builder.Services.AddScoped<AuthorsController>();
+builder.Services.AddScoped<IAuthorService, AuthorService>();
 
 builder.Services.AddCors(opt =>
 {

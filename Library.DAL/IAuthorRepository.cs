@@ -10,8 +10,9 @@ namespace Library.DAL
     public interface IAuthorRepository : IDisposable
     {
         public Author? GetAuthor(int id);
-        public void PutAuthor(Author author);
+        public void AddAuthor(Author author);
         public void DeleteAuthor(int id);
         public IEnumerable<Author> GetAllAuthors();
+        public void UpdateAuthor(Author author);
     }
 }

@@ -9,6 +9,10 @@ namespace Library.BLL
 {
     public interface IAuthorService
     {
-        Author FindAuthor(int id);
+        Author? FindAuthor(int id);
+        IEnumerable<Author> GetAuthors();
+        void AddAuthor(Author author);
+        void DeleteAuthor(int id);
+        void UpdateAuthor(Author author);
     }
 }

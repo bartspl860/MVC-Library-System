@@ -8,12 +8,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthorsComponent } from './authors/authors.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BooksComponent,
-    HeaderComponent
+    HeaderComponent,
+    AuthorsComponent
   ],
   imports: [
     BrowserModule,

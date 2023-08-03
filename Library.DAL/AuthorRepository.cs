@@ -1,4 +1,5 @@
 ﻿using Library.Model;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,11 +26,14 @@ namespace Library.DAL
             {
                 _context.Authors.Remove(author);
             }
+            _context.SaveChanges();
         }
 
         public IEnumerable<Author> GetAllAuthors()
         {
-            return _context.Authors.ToList();
+            return _context.Authors
+                .Include(author => author.WrittenBooks)
+                .ToList();
         }
 
         public Author? GetAuthor(int id)
@@ -37,7 +41,7 @@ namespace Library.DAL
             return _context.Authors.Where(r => r.Id == id).FirstOrDefault();
         }
 
-        public void PutAuthor(Author author)
+        public void AddAuthor(Author author)
         {
             _context.Authors.Add(author);
             _context.SaveChanges();
@@ -63,6 +67,11 @@ namespace Library.DAL
             }
 
             _disposed = true;
+        }
+
+        public void UpdateAuthor(Author author)
+        {
+            _context.Update(author);
         }
     }
 }

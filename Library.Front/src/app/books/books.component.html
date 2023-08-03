@@ -24,26 +24,26 @@
     </div>
 </div>
 <div class="row">
-    <ng-container *ngFor="let book of books; let i = index;">
-      <div class="col s4">
-        <div class="card indigo darker book z-depth-5">
-          <div class="card-content white-text">
-            <span class="card-title"><b>{{ book.title }}</b></span>
-            <p *ngFor="let author of book.authors">
-              {{ author.name }} {{ author.surname }}
-            </p>
-            <hr>
-            <p>                
-                {{ book.publishingHouse.name }}
-                <i class="material-icons">library_books</i>
-            </p>            
-          </div>
-          <div class="card-action">
-            <a>Borrow</a>
-            <i style="float: right;" class="indigo-text text-lighten-1"> {{ book.id }}</i>      
-          </div>
+  <ng-container *ngFor="let book of books; let i = index;">
+    <div class="col s4">
+      <div class="card indigo darker book z-depth-5">
+        <div class="card-content white-text">
+          <span class="card-title"><b>{{ book.title }}</b></span>
+          <p *ngFor="let author of book.authors">
+            {{ author.name }} {{ author.surname }}
+          </p>
+          <hr>
+          <p>                
+              {{ book.publishingHouse.name }}
+              <i class="material-icons">library_books</i>
+          </p>            
+        </div>
+        <div class="card-action">
+          <a>Borrow</a>
+          <i style="float: right;" class="indigo-text text-lighten-1"> {{ book.id }}</i>      
         </div>
       </div>
-      <div *ngIf="(i + 1) % 3 === 0" class="clearfix"></div>
-    </ng-container>
-  </div>
+    </div>
+    <div *ngIf="(i + 1) % 3 === 0" class="clearfix"></div>
+  </ng-container>
+</div>

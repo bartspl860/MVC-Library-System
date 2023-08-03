@@ -41,6 +41,6 @@ export class BooksComponent implements OnInit{
       (res)=>{
         this.books = res;
         this.loaded = true;
-    })
+    });
   }
 }
