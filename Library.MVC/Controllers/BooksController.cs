@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Library.Model;
 using Library.BLL;
+using Microsoft.AspNetCore.Authorization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace Library.MVC.Controllers
 {
@@ -56,7 +58,7 @@ namespace Library.MVC.Controllers
         
         // PUT: api/Books/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
+        [HttpPut("{id}"), Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public IActionResult PutBook(int id, Book book)
         {
             var existingBook = _bookService.FindBook(id);
@@ -77,7 +79,7 @@ namespace Library.MVC.Controllers
         }      
         // POST: api/Books
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
+        [HttpPost, Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public ActionResult<Book> PostBook(Book book)
         {
             _bookService.AddBook(book);
@@ -86,7 +88,7 @@ namespace Library.MVC.Controllers
         }
         
         // DELETE: api/Books/5
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}"), Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult> DeleteBook(int id)
         {
 

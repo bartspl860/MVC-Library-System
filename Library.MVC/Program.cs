@@ -2,12 +2,28 @@ using Library.BLL;
 using Library.DAL;
 using Library.Model;
 using Library.MVC.Controllers;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.EntityFrameworkCore;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => {
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = "https://localhost:64670",
+        ValidAudience = "https://localhost:4200",
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("returntheslabpharaoncurse"))
+    };
+});
 
 builder.Services.AddDbContextPool<DbLibraryContext>(options =>
     options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Library;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False")
@@ -66,6 +82,8 @@ app.UseRouting();
 app.UseCors();
 
 app.UseAuthorization();
+
+app.UseAuthentication();
 
 app.MapControllerRoute(
     name: "default",

@@ -16,7 +16,7 @@ builder.Services.AddDbContextPool<DbLibraryContext>(options =>
 builder.Services.AddScoped<IUnitOfWork>(provider =>
 {
     var dbContext = provider.GetService<DbLibraryContext>();
-    return new UnitOfWork(dbContext);
+    return new UnitOfWork();
 });
 
 builder.Services.AddScoped<TestController>();

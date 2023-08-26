@@ -1,5 +1,7 @@
 ﻿using Library.BLL;
 using Library.Model;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NuGet.Protocol;
@@ -70,13 +72,13 @@ namespace Library.MVC.Controllers
             }            
         }
 
-        [HttpPost]
+        [HttpPost, Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public void AddAuthor(Author author)
         {
             _authorService.AddAuthor(author);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}"), Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public ActionResult DeleteAuthor(int id)
         {
             if(_authorService.FindAuthor(id) == null)
@@ -87,7 +89,7 @@ namespace Library.MVC.Controllers
             return Ok();
         }
 
-        [HttpPut]
+        [HttpPut, Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public void UpdateAuthor(Author author)
         {
             _authorService.UpdateAuthor(author);
