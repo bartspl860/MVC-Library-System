@@ -47,6 +47,8 @@ namespace Library.Model.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     LibraryCardNumber = table.Column<long>(type: "bigint", nullable: false),
                     LibraryCardExpirationDate = table.Column<DateTime>(type: "Date", nullable: false),
+                    Username = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Surname = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateOfBirth = table.Column<DateTime>(type: "Date", nullable: false)

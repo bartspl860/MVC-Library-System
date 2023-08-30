@@ -9,13 +9,15 @@ import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthorsComponent } from './authors/authors.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BooksComponent,
     HeaderComponent,
-    AuthorsComponent
+    AuthorsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

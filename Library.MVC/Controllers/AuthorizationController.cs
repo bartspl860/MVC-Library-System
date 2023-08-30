@@ -18,7 +18,7 @@ namespace Library.MVC.Controllers
         {
             if (credentials == null)
             {
-                return BadRequest("Invalid credentials");
+                return BadRequest("No credentials passed");
             }
 
             //TODO: proces logowania

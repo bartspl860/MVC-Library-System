@@ -72,13 +72,13 @@ namespace Library.MVC.Controllers
             }            
         }
 
-        [HttpPost, Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [HttpPost, /*Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)*/]
         public void AddAuthor(Author author)
         {
             _authorService.AddAuthor(author);
         }
 
-        [HttpDelete("{id}"), Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [HttpDelete("{id}"), /*Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)*/]
         public ActionResult DeleteAuthor(int id)
         {
             if(_authorService.FindAuthor(id) == null)
@@ -89,7 +89,7 @@ namespace Library.MVC.Controllers
             return Ok();
         }
 
-        [HttpPut, Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [HttpPut, /*Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)*/]
         public void UpdateAuthor(Author author)
         {
             _authorService.UpdateAuthor(author);
