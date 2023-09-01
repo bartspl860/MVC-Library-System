@@ -1,1 +1,24 @@
-<p>login works!</p>
+<form [formGroup]="loginForm">
+    <div class="row">
+        <div class="input-field col s4 offset-m4 center">
+            <input id="login" type="text" [ngClass]="loginError ? 'invalid' : 'validate'" formControlName="login">
+            <label for="login">Username</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s4 offset-m4 center">
+            <input id="password" type="password" [ngClass]="loginError ? 'invalid' : 'validate'" formControlName="password">
+            <label for="password">Password</label>
+        </div>
+    </div>
+    <div class="row" *ngIf="loginError" style="margin-bottom: 1vh;">
+        <div class="col s4 offset-m4 center">
+            <i class="red-text">Username or password is incorrect!</i>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 1vh;">
+        <div class="col s4 offset-m4 center">
+            <a (click)="authorize()" class="waves-effect waves-light btn blue">Login</a>
+        </div>
+    </div>
+</form>
