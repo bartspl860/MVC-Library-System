@@ -11,6 +11,7 @@ namespace Library.Model
         public DbSet<Reader> Readers { get; set; }
         public DbSet<PublishingHouse> PublishingHouses { get; set; }
         public DbSet<Borrow> Borrows { get; set; }
+        public DbSet<User> Users { get; set; }
 
         public DbLibraryContext() { }
         public DbLibraryContext(DbContextOptions<DbLibraryContext> options) : base(options)
@@ -20,6 +21,13 @@ namespace Library.Model
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Library;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<User>()
+                .HasIndex(user => user.Username)
+                .IsUnique();
         }
     }
 }

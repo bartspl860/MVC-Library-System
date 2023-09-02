@@ -46,6 +46,7 @@ builder.Services.AddScoped<IUnitOfWork>(provider =>
     unitofwork.AuthorsRepository = new AuthorRepository(dbContext);
     unitofwork.ReadersRepository = new ReaderRepository(dbContext);
     unitofwork.BorrowsRepository = new BorrowRepository(dbContext);
+    unitofwork.UsersRepository = new UserRepository(dbContext);
 
     return unitofwork;
 });
@@ -57,6 +58,7 @@ builder.Services.AddScoped<IBookService, BookService>();
 
 builder.Services.AddScoped<AuthorsController>();
 builder.Services.AddScoped<IAuthorService, AuthorService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddCors(opt =>
 {

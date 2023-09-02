@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Dokumenty\\Repositories\\MVC Library System\\Library.DAL\\Library.DAL.csproj": {}
+    "F:\\GitHub\\Polsl_Sem6\\Taiib_Project\\MVC-Library-System\\Library.DAL\\Library.DAL.csproj": {}
   },
   "projects": {
-    "D:\\Dokumenty\\Repositories\\MVC Library System\\Library.DAL\\Library.DAL.csproj": {
+    "F:\\GitHub\\Polsl_Sem6\\Taiib_Project\\MVC-Library-System\\Library.DAL\\Library.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Dokumenty\\Repositories\\MVC Library System\\Library.DAL\\Library.DAL.csproj",
+        "projectUniqueName": "F:\\GitHub\\Polsl_Sem6\\Taiib_Project\\MVC-Library-System\\Library.DAL\\Library.DAL.csproj",
         "projectName": "Library.DAL",
-        "projectPath": "D:\\Dokumenty\\Repositories\\MVC Library System\\Library.DAL\\Library.DAL.csproj",
-        "packagesPath": "C:\\Users\\bartl\\.nuget\\packages\\",
-        "outputPath": "D:\\Dokumenty\\Repositories\\MVC Library System\\Library.DAL\\obj\\",
+        "projectPath": "F:\\GitHub\\Polsl_Sem6\\Taiib_Project\\MVC-Library-System\\Library.DAL\\Library.DAL.csproj",
+        "packagesPath": "C:\\Users\\gplay\\.nuget\\packages\\",
+        "outputPath": "F:\\GitHub\\Polsl_Sem6\\Taiib_Project\\MVC-Library-System\\Library.DAL\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "F:\\Programy\\Visual_Studio\\Program Files\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\bartl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\gplay\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +32,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Dokumenty\\Repositories\\MVC Library System\\Library.Model\\Library.Model.csproj": {
-                "projectPath": "D:\\Dokumenty\\Repositories\\MVC Library System\\Library.Model\\Library.Model.csproj"
+              "F:\\GitHub\\Polsl_Sem6\\Taiib_Project\\MVC-Library-System\\Library.Model\\Library.Model.csproj": {
+                "projectPath": "F:\\GitHub\\Polsl_Sem6\\Taiib_Project\\MVC-Library-System\\Library.Model\\Library.Model.csproj"
               }
             }
           }
@@ -44,6 +48,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[6.0.21, )"
@@ -85,21 +93,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Dokumenty\\Repositories\\MVC Library System\\Library.Model\\Library.Model.csproj": {
+    "F:\\GitHub\\Polsl_Sem6\\Taiib_Project\\MVC-Library-System\\Library.Model\\Library.Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Dokumenty\\Repositories\\MVC Library System\\Library.Model\\Library.Model.csproj",
+        "projectUniqueName": "F:\\GitHub\\Polsl_Sem6\\Taiib_Project\\MVC-Library-System\\Library.Model\\Library.Model.csproj",
         "projectName": "Library.Model",
-        "projectPath": "D:\\Dokumenty\\Repositories\\MVC Library System\\Library.Model\\Library.Model.csproj",
-        "packagesPath": "C:\\Users\\bartl\\.nuget\\packages\\",
-        "outputPath": "D:\\Dokumenty\\Repositories\\MVC Library System\\Library.Model\\obj\\",
+        "projectPath": "F:\\GitHub\\Polsl_Sem6\\Taiib_Project\\MVC-Library-System\\Library.Model\\Library.Model.csproj",
+        "packagesPath": "C:\\Users\\gplay\\.nuget\\packages\\",
+        "outputPath": "F:\\GitHub\\Polsl_Sem6\\Taiib_Project\\MVC-Library-System\\Library.Model\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "F:\\Programy\\Visual_Studio\\Program Files\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\bartl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\gplay\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -125,6 +137,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[6.0.21, )"
@@ -166,7 +182,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

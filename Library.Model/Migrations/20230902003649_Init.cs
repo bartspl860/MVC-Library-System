@@ -47,8 +47,6 @@ namespace Library.Model.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     LibraryCardNumber = table.Column<long>(type: "bigint", nullable: false),
                     LibraryCardExpirationDate = table.Column<DateTime>(type: "Date", nullable: false),
-                    Username = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Surname = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateOfBirth = table.Column<DateTime>(type: "Date", nullable: false)
@@ -56,6 +54,21 @@ namespace Library.Model.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Readers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Username = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    HashedPassword = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false),
+                    PasswordSalt = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -159,6 +172,12 @@ namespace Library.Model.Migrations
                 name: "IX_Borrows_ReaderId",
                 table: "Borrows",
                 column: "ReaderId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_Username",
+                table: "Users",
+                column: "Username",
+                unique: true);
         }
 
         /// <inheritdoc />
@@ -169,6 +188,9 @@ namespace Library.Model.Migrations
 
             migrationBuilder.DropTable(
                 name: "Borrows");
+
+            migrationBuilder.DropTable(
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "Authors");

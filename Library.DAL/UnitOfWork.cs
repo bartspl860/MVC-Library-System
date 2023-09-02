@@ -9,6 +9,7 @@ namespace Library.DAL
         private IAuthorRepository? _authorsRepository;
         private IReaderRepository? _readersRepository;
         private IBorrowRepository? _borrowsRepository;
+        private IUserRepository? _usersRepository;
 
         public IBookRepository BooksRepository
         {
@@ -38,6 +39,12 @@ namespace Library.DAL
         {
             get => _borrowsRepository;
             set => this._borrowsRepository = value;
+        }
+
+        public IUserRepository UsersRepository
+        {
+            get => this._usersRepository;
+            set => this._usersRepository = value;
         }
     }
 }

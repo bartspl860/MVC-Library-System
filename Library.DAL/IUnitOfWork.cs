@@ -14,5 +14,6 @@ namespace Library.DAL
         IAuthorRepository AuthorsRepository { get; }
         IReaderRepository ReadersRepository { get; }
         IBorrowRepository BorrowsRepository { get; }
+        IUserRepository UsersRepository { get; }
     }
 }
