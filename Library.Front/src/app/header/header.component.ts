@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-header',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  auth = inject(AuthService);
+
+  isLogged(): boolean{
+    return localStorage.getItem("session_token") !== null;
+  }
+
+  logout(){
+    this.auth.logout();
+  }
 }

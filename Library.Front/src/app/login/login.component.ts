@@ -26,6 +26,13 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  constructor(){
+    const token = localStorage.getItem("session_token");
+    if(token !== null){
+      this.router.navigate(['admin']);
+    }
+  }
+
   authorize(){
     const loginModel = new LoginModel(
       this.loginForm.value.login,
@@ -35,7 +42,7 @@ export class LoginComponent implements OnInit {
     this.auth.login(loginModel).subscribe(
       (res) =>{
         localStorage.setItem("session_token", res.token);
-        //tutaj będzie redirect do panelu admina
+        this.router.navigate(['admin']);
       },
       (error) =>{        
         this.loginError = true;

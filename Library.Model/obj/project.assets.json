@@ -3591,24 +3591,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\gplay\\.nuget\\packages\\": {},
-    "F:\\Programy\\Visual_Studio\\Program Files\\Shared\\NuGetPackages": {}
+    "C:\\Users\\bartl\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\GitHub\\Polsl_Sem6\\Taiib_Project\\MVC-Library-System\\Library.Model\\Library.Model.csproj",
+      "projectUniqueName": "D:\\Dokumenty\\Repositories\\MVC Library System\\Library.Model\\Library.Model.csproj",
       "projectName": "Library.Model",
-      "projectPath": "F:\\GitHub\\Polsl_Sem6\\Taiib_Project\\MVC-Library-System\\Library.Model\\Library.Model.csproj",
-      "packagesPath": "C:\\Users\\gplay\\.nuget\\packages\\",
-      "outputPath": "F:\\GitHub\\Polsl_Sem6\\Taiib_Project\\MVC-Library-System\\Library.Model\\obj\\",
+      "projectPath": "D:\\Dokumenty\\Repositories\\MVC Library System\\Library.Model\\Library.Model.csproj",
+      "packagesPath": "C:\\Users\\bartl\\.nuget\\packages\\",
+      "outputPath": "D:\\Dokumenty\\Repositories\\MVC Library System\\Library.Model\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "F:\\Programy\\Visual_Studio\\Program Files\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\gplay\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\bartl\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3679,7 +3674,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
       }
     }
   }
