@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { error } from 'jquery';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-admin-panel',
@@ -14,6 +14,8 @@ export class AdminPanelComponent implements OnInit{
     if(token === null){
       this.router.navigate(['login']);
     }
+
+    
   }
   ngOnInit(): void {
     this.auth.getUsername().subscribe(

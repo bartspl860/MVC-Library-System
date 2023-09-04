@@ -13,6 +13,12 @@ export class AuthService {
   private apiUrl = "http://localhost:64670/api/authorize/";
   constructor(private http: HttpClient, private router: Router) { }
 
+  username!: string;
+
+  isLogged(){
+    return localStorage.getItem("session_token") !== null;
+  }
+
   login(credentials: LoginModel) : Observable<LoginResponse>{
     return this.http.post<LoginResponse>(this.apiUrl + "login", credentials);
   }

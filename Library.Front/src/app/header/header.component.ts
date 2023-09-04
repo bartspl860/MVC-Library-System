@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -6,15 +6,17 @@ import { AuthService } from '../auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
-
+export class HeaderComponent implements OnInit{
   auth = inject(AuthService);
+  username!: string;
 
-  isLogged(): boolean{
-    return localStorage.getItem("session_token") !== null;
-  }
-
-  logout(){
-    this.auth.logout();
+  ngOnInit(): void {
+    if(!this.auth.isLogged())
+      return;
+    this.auth.getUsername().subscribe((res)=>{
+      this.username = res;
+    },(error)=>{
+      this.auth.logout();
+    });
   }
 }
