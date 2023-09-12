@@ -8,21 +8,76 @@
 
 <div class="row" style="margin-bottom: 50px; margin-top: 50px;">
     <div class="col s4 center">
-        <a class="waves-effect waves-teal btn green">
+        <a class="waves-effect waves-teal btn green" (click)="toggleBooksTable()">
             <i class="material-icons left">book</i>
             Books
         </a>
     </div>
     <div class="col s4 center">
-        <a class="waves-effect waves-teal btn blue">
+        <a class="waves-effect waves-teal btn blue" (click)="toggleAuthorsTable()">
             <i class="material-icons left">person</i>
             Authors
         </a>
     </div>
     <div class="col s4 center">
-        <a class="waves-effect waves-teal btn purple">
+        <a class="waves-effect waves-teal btn purple" (click)="toggleUsersTable()">
             <i class="material-icons left">assignment_ind</i>
             Users
         </a>
+    </div>
+</div>
+
+
+<div *ngIf="booksTable" class="row" style="margin-top: 1vh;">
+    <form [formGroup]="addBookForm">
+        <div class="row">
+            <div class="input-field col s4 offset-m4 center">
+                <input id="title" type="text" formControlName="title">
+                <label for="title">Title</label>
+            </div>
+        </div>    
+        <div class="row">
+            <div class="input-field col s4 offset-m4 center">
+                <input id="publishingHouse" type="text" formControlName="publishingHouse">
+                <label for="publishingHouse">Publishing House</label>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 1vh;">
+            <div class="col s4 offset-m4 center">
+                <a (click)="addBook()" class="waves-effect waves-light btn green">Add Book</a>
+            </div>
+        </div>
+    </form>    
+</div>
+
+<div *ngIf="booksTable" class="row" style="margin-top: 1vh;">
+    <div class="col s12">
+        <table class="highlight centered responsive-table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Authors</th>
+                    <th>Publishing House</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let book of books">
+                    <td>{{book.title}}</td>
+                    <td>
+                        <span *ngFor="let author of book.authors">
+                            {{author.name}} {{author.surname}}
+                        </span>
+                    </td>
+                    <td>{{book.publishingHouse.name}}</td>
+                    <td>
+                        <a class="waves-effect waves-teal btn red">
+                            <i class="material-icons">remove_circle</i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>

@@ -12,7 +12,6 @@ namespace Library.Model
         public int Id { get; set; }
         [Required, MaxLength(50)]
         public string? Title { get; set; }
-        [Required]
         public ICollection<Author>? Authors { get; set; }
         [Required]
         public PublishingHouse? PublishingHouse { get; set; }

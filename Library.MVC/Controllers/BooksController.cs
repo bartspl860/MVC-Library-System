@@ -80,11 +80,14 @@ namespace Library.MVC.Controllers
         // POST: api/Books
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost, /*Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)*/]
-        public ActionResult<Book> PostBook(Book book)
+        public ActionResult<Book> PostBook(params Book[] books)
         {
-            _bookService.AddBook(book);
+            foreach(var book in books)
+            {
+                _bookService.AddBook(book);
+            }
 
-            return CreatedAtAction("AddBook", new { id = book.Id }, book);
+            return CreatedAtAction("AddBooks", new { books });
         }
         
         // DELETE: api/Books/5
