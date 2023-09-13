@@ -20,21 +20,8 @@ namespace Library.MVC.Controllers
             _bookService = bookService;
         }
 
-        [HttpGet("{id}/Books")]
-        public IActionResult GetAuthorBooks(int id) {
-
-            var author = _authorService.FindAuthor(id).WrittenBooks;
-
-            if(author == null)
-            {
-                NotFound(id);
-            }
-          
-            return Ok();
-        }
-
-        [HttpGet]
-        public IActionResult GetAuthors([FromQuery(Name = "Key")] string? key = null)
+        [HttpGet("Books")]
+        public IActionResult GetAuthorBooks([FromQuery(Name = "Key")] string? key = null)
         {
             IEnumerable<Author> authors;
 
@@ -70,6 +57,12 @@ namespace Library.MVC.Controllers
 
                 return Ok(data);
             }            
+        }
+
+        [HttpGet]
+        public IActionResult GetAuthors()
+        {
+            return Ok(_authorService.GetAuthors());
         }
 
         [HttpPost, /*Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)*/]

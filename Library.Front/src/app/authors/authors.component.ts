@@ -18,7 +18,7 @@ export class AuthorsComponent {
   filterForm!: FormGroup;
   
   ngOnInit(): void {
-    this.authorService.get().subscribe(
+    this.authorService.getWithBooks().subscribe(
       (res)=>{      
         this.authorBooks = res;
         this.loaded = true;
@@ -34,7 +34,7 @@ export class AuthorsComponent {
     this.loaded = false;
     this.authorBooks = [];
 
-    this.authorService.getFilter(key).subscribe(
+    this.authorService.getFilterWithBooks(key).subscribe(
       (res)=>{
         this.authorBooks = res;
         this.loaded = true;

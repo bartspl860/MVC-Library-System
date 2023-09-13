@@ -20,8 +20,9 @@ export class BooksService {
     return this.http.get<BookResponse[]>(this.apiUrl + "?Title=" + key);
   }
 
-  add(book: BookRequest){
-    //doesnt work
-    return this.http.post<any>(this.apiUrl, book);
+  add(book: BookRequest){    
+    let books: BookRequest[] = [];
+    books.push(book);
+    return this.http.post<any>(this.apiUrl, books);
   }
 }

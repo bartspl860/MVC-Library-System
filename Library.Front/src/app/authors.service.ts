@@ -12,11 +12,15 @@ export class AuthorsService {
   private apiUrl = "http://localhost:64670/api/Authors/";
   constructor(private http: HttpClient) { }
 
-  get() : Observable<AuthorBookResponse[]> {
-    return this.http.get<AuthorBookResponse[]>(this.apiUrl);
+  getWithBooks() : Observable<AuthorBookResponse[]> {
+    return this.http.get<AuthorBookResponse[]>(this.apiUrl + "Books");
   }
 
-  getFilter(key: string) : Observable<AuthorBookResponse[]>{
-    return this.http.get<AuthorBookResponse[]>(this.apiUrl + "?Key=" + key);
+  getFilterWithBooks(key: string) : Observable<AuthorBookResponse[]>{
+    return this.http.get<AuthorBookResponse[]>(this.apiUrl + "Books" + "?Key=" + key);
+  }
+
+  get() : Observable<AuthorResponse[]> {
+    return this.http.get<AuthorResponse[]>(this.apiUrl);
   }
 }

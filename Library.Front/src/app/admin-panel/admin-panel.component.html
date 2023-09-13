@@ -27,7 +27,6 @@
     </div>
 </div>
 
-
 <div *ngIf="booksTable" class="row" style="margin-top: 1vh;">
     <form [formGroup]="addBookForm">
         <div class="row">
@@ -35,7 +34,18 @@
                 <input id="title" type="text" formControlName="title">
                 <label for="title">Title</label>
             </div>
-        </div>    
+        </div>
+        <div class="row">
+            <div class="input-field col s4 offset-m4 center">
+                <select multiple formControlName="authors">
+                    <option value="" disabled selected>Choose authors</option>
+                    <option *ngFor="let author of authors; index as i" [value]="i">
+                        {{author.name}} {{author.surname}}
+                    </option>
+                </select>
+                <label>Authors</label>
+            </div>
+        </div>
         <div class="row">
             <div class="input-field col s4 offset-m4 center">
                 <input id="publishingHouse" type="text" formControlName="publishingHouse">
@@ -47,7 +57,7 @@
                 <a (click)="addBook()" class="waves-effect waves-light btn green">Add Book</a>
             </div>
         </div>
-    </form>    
+    </form>
 </div>
 
 <div *ngIf="booksTable" class="row" style="margin-top: 1vh;">
