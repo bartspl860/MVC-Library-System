@@ -10,10 +10,11 @@ namespace Library.BLL
     public interface IUserService
     {
         public void RegisterUser(UserRequestModel user);
-        public void DeleteUser(UserRequestModel user);
+        public void DeleteUser(int id);
         public void UpdateUserPassword(string tokenString, string oldPassword, string newPassword);
         public bool IsUsernameExists(string username);
         public bool IsCredentialsValid(UserRequestModel user);
         public string JWTWhoAmI(string tokenString);
+        public IEnumerable<User> GetUsers();
     }
 }

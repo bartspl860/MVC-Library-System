@@ -19,6 +19,23 @@ export class AuthService {
     return localStorage.getItem("session_token") !== null;
   }
 
+  register(credentials: LoginModel){
+    let token = localStorage.getItem("session_token");
+    const headers = AuthService.createJwtHeader(token);
+    return this.http.post<any>(this.apiUrl + "register", credentials, { headers })
+    .pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 200) {
+          // Successful response with plain text (username)
+          return of(error.error); // This will be the username
+        } else {
+          // Error response with JSON error message
+          return throwError(error.error);
+        }
+      })
+    );
+  }
+
   login(credentials: LoginModel) : Observable<LoginResponse>{
     return this.http.post<LoginResponse>(this.apiUrl + "login", credentials);
   }
@@ -30,9 +47,7 @@ export class AuthService {
 
   getUsername() : Observable<string>{
     let token = localStorage.getItem("session_token");
-
-    console.log(token);
-    const headers = this.createJwtHeader(token);
+    const headers = AuthService.createJwtHeader(token);
 
     return this.http.get(this.apiUrl + 'whoami', { headers, responseType: 'text' })
     .pipe(
@@ -48,10 +63,8 @@ export class AuthService {
     );
   }
 
-  createJwtHeader(token: string | null): HttpHeaders {
+  static createJwtHeader(token: string | null): HttpHeaders {
     // Set the Authorization header with the Bearer token
-    const headers = new HttpHeaders().set("Authorization", "Bearer " + token);
-  
-    return headers;
+    return new HttpHeaders().set("Authorization", "Bearer " + token);  
   }
 }

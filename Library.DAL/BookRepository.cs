@@ -54,7 +54,10 @@ namespace Library.DAL
 
         public void AddBook(Book book)
         {
-            _context.Add(book);
+            if (!IsDuplicated(book))
+            {
+                _context.Add(book);
+            }
             _context.SaveChanges();
         }
 
@@ -78,6 +81,14 @@ namespace Library.DAL
             }
 
             _disposed = true;
+        }
+
+        public bool IsDuplicated(Book book)
+        {
+            var bookInDb = _context.Books
+                .Where(b => b.Title == book.Title && b.PublishingHouse.Name == b.PublishingHouse.Name)
+                .ToList();
+            return bookInDb.Any();
         }
     }
 }

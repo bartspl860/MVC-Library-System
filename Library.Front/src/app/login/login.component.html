@@ -1,5 +1,5 @@
 <app-header></app-header>
-<form [formGroup]="loginForm">
+<form [formGroup]="loginForm" (ngSubmit)="authorize()">
     <div class="row">
         <div class="input-field col s4 offset-m4 center">
             <input id="login" type="text" [ngClass]="loginError ? 'invalid' : 'validate'" formControlName="login">

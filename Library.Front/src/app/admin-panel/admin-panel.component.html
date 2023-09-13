@@ -82,7 +82,124 @@
                     </td>
                     <td>{{book.publishingHouse.name}}</td>
                     <td>
-                        <a class="waves-effect waves-teal btn red">
+                        <a (click)="removeBook(book.id)" class="waves-effect waves-teal btn red">
+                            <i class="material-icons">remove_circle</i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div *ngIf="authorsTable" class="row" style="margin-top: 1vh;">
+    <form [formGroup]="addAuthorForm">
+        <div class="row">
+            <div class="input-field col s4 offset-m4 center">
+                <input id="name" type="text" formControlName="name">
+                <label for="name">Name</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s4 offset-m4 center">
+                <input id="surname" type="text" formControlName="surname">
+                <label for="surname">Surname</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s4 offset-m4 center">
+                <input id="dateOfBirth" type="date" formControlName="dateOfBirth">
+                <label for="dateOfBirth">Date of Birth</label>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 1vh;">
+            <div class="col s4 offset-m4 center">
+                <a (click)="addAuthor()" class="waves-effect waves-light btn green">Add Author</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div *ngIf="authorsTable" class="row" style="margin-top: 1vh;">
+    <div class="col s12">
+        <table class="highlight centered responsive-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Date of Birth</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let author of authors">
+                    <td>{{author.name}}</td>
+                    <td>{{author.surname}}</td>
+                    <td>{{author.dateOfBirth | date}}</td>
+                    <td>
+                        <a (click)="removeAuthor(author.id)" class="waves-effect waves-teal btn red">
+                            <i class="material-icons">remove_circle</i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div *ngIf="usersTable" class="row" style="margin-top: 1vh;">
+    <form [formGroup]="addUserForm">
+        <div class="row">
+            <div class="input-field col s4 offset-m4 center">
+                <input id="username" type="text" formControlName="username">
+                <label for="username">Username</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s4 offset-m4 center">
+                <input id="password" type="password" formControlName="password" [ngClass]="passwordNotMatch ? 'invalid' : 'validate'">
+                <label for="password">Password</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s4 offset-m4 center">
+                <input id="cpassword" type="password" formControlName="cpassword" [ngClass]="passwordNotMatch ? 'invalid' : 'validate'">
+                <label for="cpassword">Confirm Password</label>
+            </div>
+        </div>
+        <div class="row" *ngIf="validationError">
+            <div class="col s4 offset-m4 center">
+                <span class="red-text center">Username min 4 characters, Password min 8 characters</span>
+            </div>            
+        </div>
+        <div class="row" *ngIf="passwordNotMatch">
+            <div class="col s4 offset-m4 center">
+                <span class="red-text center">Password does not match!</span>
+            </div>            
+        </div>
+        <div class="row" style="margin-bottom: 1vh;">
+            <div class="col s4 offset-m4 center">
+                <button (click)="addUser()" class="waves-effect waves-light btn green">Add User</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div *ngIf="usersTable" class="row" style="margin-top: 1vh;">
+    <div class="col s12">
+        <table class="highlight centered responsive-table">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th *ngIf="atLeastOneUser()">Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users">
+                    <td>{{user.username}}</td>
+                    <td *ngIf="atLeastOneUser()">
+                        <a (click)="removeUser(user.id)" class="waves-effect waves-teal btn red">
                             <i class="material-icons">remove_circle</i>
                         </a>
                     </td>

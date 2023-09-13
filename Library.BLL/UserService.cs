@@ -18,12 +18,12 @@ namespace Library.BLL
             _unitOfWork = unitOfWork;
         }
 
-        public void DeleteUser(UserRequestModel user)
+        public void DeleteUser(int id)
         {
-            if (user.Username != null && IsUsernameExists(user.Username))
+            var user = _unitOfWork.UsersRepository.GetUser(id);
+            if (user != null)
             {
-                User? userToDelete = _unitOfWork.UsersRepository.GetUser(user.Username);
-                _unitOfWork.UsersRepository.DeleteUser(userToDelete.Id);
+                _unitOfWork.UsersRepository.DeleteUser(user.Id);
             }
         }
 
@@ -102,6 +102,11 @@ namespace Library.BLL
             User userToCheck = _unitOfWork.UsersRepository.GetUser(user.Username);
             
             return BCrypt.Net.BCrypt.Verify(user.Password, userToCheck.HashedPassword);
+        }
+
+        public IEnumerable<User> GetUsers()
+        {
+            return _unitOfWork.UsersRepository.GetAllUsers();
         }
     }
 }

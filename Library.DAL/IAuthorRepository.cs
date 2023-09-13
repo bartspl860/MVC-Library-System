@@ -14,5 +14,6 @@ namespace Library.DAL
         public void DeleteAuthor(int id);
         public IEnumerable<Author> GetAllAuthors();
         public void UpdateAuthor(Author author);
+        public bool IsDuplicated(Author author);
     }
 }

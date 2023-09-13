@@ -25,4 +25,8 @@ export class BooksService {
     books.push(book);
     return this.http.post<any>(this.apiUrl, books);
   }
+
+  remove(id: number){
+    return this.http.delete<any>(this.apiUrl + id);
+  }
 }

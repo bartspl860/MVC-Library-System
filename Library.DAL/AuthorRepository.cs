@@ -19,6 +19,14 @@ namespace Library.DAL
             this._context = dbLibraryContext;
         }
 
+        public bool IsDuplicated(Author author)
+        {
+            var authorInDb = _context.Authors
+                .Where(a=>a.Name == author.Name && a.Surname == author.Surname)
+                .ToList();
+            return authorInDb.Any();
+        }
+
         public void DeleteAuthor(int id)
         {
             var author = GetAuthor(id);
@@ -43,7 +51,11 @@ namespace Library.DAL
 
         public void AddAuthor(Author author)
         {
-            _context.Authors.Add(author);
+            if (!IsDuplicated(author))
+            {
+                _context.Authors.Add(author);
+            }
+            
             _context.SaveChanges();
         }
 

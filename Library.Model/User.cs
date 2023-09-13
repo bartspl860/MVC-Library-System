@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Library.Model
@@ -17,9 +18,9 @@ namespace Library.Model
         public string Username { get; set; }
         [Required]
         [MinLength(60)]
-        [MaxLength(60)] /* BCrypt fixed hash length */
+        [MaxLength(60), JsonIgnore] /* BCrypt fixed hash length */
         public string HashedPassword { get; set; }
-        [Required]
+        [Required, JsonIgnore]
         public string PasswordSalt { get; set; }
     }
 }

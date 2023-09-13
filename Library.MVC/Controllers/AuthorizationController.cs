@@ -68,7 +68,7 @@ namespace Library.MVC.Controllers
             return Ok("You logged out, trust me bro");
         }
 
-        [HttpPost("register")]
+        [HttpPost("register"), Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public IActionResult Register([FromBody] LoginModel credentials)
         {
             //nulle chyba można usunąć bo to sprawdza na wejściu ale zostawie tobie do obejrzenia
