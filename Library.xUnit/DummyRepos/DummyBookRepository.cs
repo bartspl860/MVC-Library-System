@@ -44,6 +44,11 @@ namespace Library.xUnit.DummyRepos
             throw new NotImplementedException();
         }
 
+        public bool IsDuplicated(Book book)
+        {
+            throw new NotImplementedException();
+        }
+
         public void UpdateBook(Book book)
         {
             if (_context == null) throw new InvalidOperationException();

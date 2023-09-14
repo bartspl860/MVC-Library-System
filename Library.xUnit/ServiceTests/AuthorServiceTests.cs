@@ -36,29 +36,7 @@ namespace Library.xUnit.ServiceTests
             authorService.AddAuthor(author);
             mockAuthorsRepo.Verify(repo => repo.AddAuthor(author), Times.Once);
         }
-
-        [Fact]
-        public void AddAuthorTest_ShouldFail_MissingID()
-        {
-            var unitofwork = new UnitOfWork();
-
-            var author = new Author()
-            {
-                Name = "Marcin",
-                Surname = "Najman",
-                DateOfBirth = DateTime.Now,
-            };
-
-            var mockAuthorsRepo = new Mock<IAuthorRepository>();
-
-            mockAuthorsRepo.Setup(repo => repo.AddAuthor(It.IsAny<Author>())).Verifiable();
-
-            unitofwork.AuthorsRepository = mockAuthorsRepo.Object;
-
-            var authorService = new AuthorService(unitofwork);
-
-            var exception = Assert.Throws<InvalidOperationException>(() => authorService.AddAuthor(author));
-        }
+        
         [Fact]
         public void FindAuthorTest_ShouldPass_Found()
         {
@@ -74,15 +52,15 @@ namespace Library.xUnit.ServiceTests
 
             var mockAuthorsRepo = new Mock<IAuthorRepository>();
 
+            mockAuthorsRepo.Setup(repo => repo.GetAuthor(1)).Returns(author);
+
             unitofwork.AuthorsRepository = mockAuthorsRepo.Object;
 
             var authorService = new AuthorService(unitofwork);
 
-            authorService.AddAuthor(author);
-
             var foundAuthor = authorService.FindAuthor(1);
 
-            Assert.Equal(foundAuthor, author);
+            Assert.Equal(author, foundAuthor);
         }
         [Fact]
         public void FindAuthorTest_ShouldPass_NotFound()

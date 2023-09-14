@@ -38,6 +38,11 @@ namespace Library.xUnit.StubRepos
             return stubBook;
         }
 
+        public bool IsDuplicated(Book book)
+        {
+            throw new NotImplementedException();
+        }
+
         public void UpdateBook(Book book)
         {
             return;

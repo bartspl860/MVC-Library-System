@@ -18,17 +18,40 @@ namespace Library.xUnit.RepoTests
                 Id = 1,
                 Title = "Test"
             };
+            
+            var bookrepomock = new Mock<IBookRepository>();
 
-            unitofwork.BooksRepository = new FakeBookRepository();
-            unitofwork.BooksRepository.AddBook(book);
+            bookrepomock.Setup(repo => repo.AddBook(book));
+            bookrepomock.Setup(repo => repo.GetBook(1)).Returns(book);
+
+            unitofwork.BooksRepository = bookrepomock.Object;
 
             var bookservice = new BookService(unitofwork);
 
-            Assert.Contains<Book>(book, bookservice.GetBooks());
+            bookservice.AddBook(book);
+            
+            Assert.Equal(book, bookservice.FindBook(1));
         }
         [Fact]
         public void AddBookTest_ShouldThrow_InvalidBook()
         {
+            var unitofwork = new UnitOfWork();
+
+            var book = new Book()
+            {
+                Id = 1,
+                Title = "Test"
+            };
+
+            var bookrepomock = new Mock<IBookRepository>();
+
+            bookrepomock.Setup(repo => repo.AddBook(book)).Throws(new Exception());
+
+            unitofwork.BooksRepository = bookrepomock.Object;
+
+            var bookservice = new BookService(unitofwork);            
+
+            Assert.Throws<Exception>(() => bookservice.AddBook(book));
         }
 
         [Fact]
@@ -97,4 +120,50 @@ namespace Library.xUnit.RepoTests
 
             Assert.Equal(0, bookservice.CountBooks());
         }
+        [Fact]
+        public void UpdateBook_ShouldPass()
+        {            
+            var book = new Book
+            {
+                Id = 2,
+                Title = "Test"              
+            };
+
+            var mockbookrepo = new Mock<IBookRepository>();
+            mockbookrepo.Setup(repo => repo.UpdateBook(book));
+
+            var unitofwork = new UnitOfWork();
+
+            unitofwork.BooksRepository = mockbookrepo.Object;
+
+            var bookservice = new BookService(unitofwork);
+
+            var result = bookservice.UpdateBook(book);
+
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void UpdateBook_ShouldBeFalse()
+        {
+            var book = new Book
+            {
+                Id = 2,
+                Title = "Test"
+            };
+
+            var mockbookrepo = new Mock<IBookRepository>();
+            mockbookrepo.Setup(repo => repo.UpdateBook(book)).Throws(new Exception());
+
+            var unitofwork = new UnitOfWork();
+
+            unitofwork.BooksRepository = mockbookrepo.Object;
+
+            var bookservice = new BookService(unitofwork);
+
+            var result = bookservice.UpdateBook(book);
+
+            Assert.False(result);
+        }
+    }    
 }

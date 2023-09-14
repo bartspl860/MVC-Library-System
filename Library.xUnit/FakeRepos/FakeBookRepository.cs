@@ -38,6 +38,11 @@ namespace Library.xUnit.FakeRepos
             return _books.Where(b => b.Id == id).FirstOrDefault();
         }
 
+        public bool IsDuplicated(Book book)
+        {
+            throw new NotImplementedException();
+        }
+
         public void UpdateBook(Book book)
         {
             var book_to_update = _books.Where(b => b.Id == book.Id).FirstOrDefault();
