@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Library.xUnit.ControllerTests
 {
-    public class BooksMVCControllerTest
+    public class HomeMvcControllerTest
     {
         [Fact]
         public void IndexViewTest()

@@ -55,6 +55,41 @@ namespace Library.xUnit.RepoTests
         }
 
         [Fact]
+        public void DeleteBookTest_ShouldPass()
+        {
+            var unitofwork = new UnitOfWork();
+
+            var bookmockrepo = new Mock<IBookRepository>();
+
+            bookmockrepo.Setup(repo => repo.DeleteBook(3));
+            bookmockrepo.Setup(repo => repo.GetBook(3)).Returns((Book)null);
+
+            unitofwork.BooksRepository = bookmockrepo.Object;
+
+            var bookService = new BookService(unitofwork);
+
+            bookService.DeleteBook(3);
+
+            Assert.Null(bookService.FindBook(3));
+        }
+
+        [Fact]
+        public void DeleteBookTest_ShouldFail()
+        {
+            var unitofwork = new UnitOfWork();
+
+            var bookmockrepo = new Mock<IBookRepository>();
+
+            bookmockrepo.Setup(repo => repo.DeleteBook(3)).Throws(new Exception());
+
+            unitofwork.BooksRepository = bookmockrepo.Object;
+
+            var bookService = new BookService(unitofwork);
+
+            Assert.Throws<Exception>(() => bookService.DeleteBook(3));
+        }
+
+        [Fact]
         public void FindBookTest_ShouldPass_Exists()
         {
             var unitofwork = new UnitOfWork();

@@ -58,7 +58,7 @@ namespace Library.MVC.Controllers
         
         // PUT: api/Books/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}"), /*Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)*/]
+        [HttpPut("{id}"), Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public IActionResult PutBook(int id, Book book)
         {
             var existingBook = _bookService.FindBook(id);
@@ -79,7 +79,7 @@ namespace Library.MVC.Controllers
         }      
         // POST: api/Books
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost, /*Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)*/]
+        [HttpPost, Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public ActionResult<Book> PostBook(params Book[] books)
         {
             foreach(var book in books)
@@ -91,7 +91,7 @@ namespace Library.MVC.Controllers
         }
         
         // DELETE: api/Books/5
-        [HttpDelete("{id}"), /*Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)*/]
+        [HttpDelete("{id}"), Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult> DeleteBook(int id)
         {
 
