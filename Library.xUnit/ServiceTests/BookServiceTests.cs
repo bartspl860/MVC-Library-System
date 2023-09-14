@@ -94,24 +94,32 @@ namespace Library.xUnit.RepoTests
         {
             var unitofwork = new UnitOfWork();
 
-            var book = new Book()
-            {
-                Id = 1,
-                Title = "Test"
-            };
+            var bookmockrepo = new Mock<IBookRepository>();
+            bookmockrepo.Setup(repo => repo.GetBook(3)).Returns(new Book());
 
-            unitofwork.BooksRepository = new FakeBookRepository();
-            unitofwork.BooksRepository.AddBook(book);
+            unitofwork.BooksRepository = bookmockrepo.Object;
 
-            var bookservice = new BookService(unitofwork);
+            var bookService = new BookService(unitofwork);
 
-            var found_book = bookservice.FindBook(1);
+            bookService.FindBook(3);
 
-            Assert.Equal(found_book, book);
+            Assert.NotNull(bookService.FindBook(3));
         }
         [Fact]
         public void FindBookTest_ShouldPass_NotExists()
         {
+            var unitofwork = new UnitOfWork();
+
+            var bookmockrepo = new Mock<IBookRepository>();
+            bookmockrepo.Setup(repo => repo.GetBook(3)).Returns((Book)null);
+
+            unitofwork.BooksRepository = bookmockrepo.Object;
+
+            var bookService = new BookService(unitofwork);
+
+            bookService.FindBook(3);
+
+            Assert.Null(bookService.FindBook(3));
         }
 
         [Fact]
