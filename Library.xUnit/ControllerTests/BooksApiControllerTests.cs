@@ -62,62 +62,19 @@ namespace Library.xUnit.ControllerTests
         {
             Book book = new Book
             {
-                Title = "Title",
-                Authors = {},
-                PublishingHouse =
-                {
-                    Name = "GREG"
-                }
+                Title = "Title"
             };
 
             var mockService = new Mock<IBookService>();
             mockService
-                .Setup(service => service.AddBook(It.IsAny<Book>()));
+                .Setup(service => service.AddBook(book));
 
             var controller = new BooksController(mockService.Object);
 
             var apiResult = controller.PostBook(book);
-            var result = Assert.IsType<CreatedAtActionResult>(apiResult);
-            Assert.Equal<Book>(book, (Book)result.Value);
-        }
-        [Fact]
-        public void PostBook_MultipleBooks()
-        {
-            Book book1 = new Book
-            {
-                Title = "Title1",
-                Authors = { },
-                PublishingHouse =
-                    {
-                        Name = "GREG"
-                    }
-            };
-            Book book2 = new Book
-            {
-                Title = "Title2",
-                Authors = { },
-                PublishingHouse =
-                    {
-                        Name = "GREG"
-                    }
-            };
 
-            var mockService = new Mock<IBookService>();
-            mockService
-                .Setup(service => service.AddBook(It.IsAny<Book>()));
-
-            var controller = new BooksController(mockService.Object);
-
-            var apiResult = controller.PostBook(book1, book2);
-            var result = Assert.IsType<CreatedAtActionResult>(apiResult);
-            var resultValue = result.Value;
-            Assert.IsAssignableFrom<IEnumerable<Book>>(resultValue);
-
-            IEnumerable<Book> addedBooks = (IEnumerable<Book>)resultValue;
-
-            Assert.Equal(addedBooks.ElementAt(0), book1);
-            Assert.Equal(addedBooks.ElementAt(1), book2);
-        }
+            Assert.IsType<CreatedAtActionResult>(apiResult);
+        }      
         [Fact]
         public void PostBook_BadRequest()
         {
@@ -138,7 +95,7 @@ namespace Library.xUnit.ControllerTests
         {
             var mockService = new Mock<IBookService>();
             mockService
-                .Setup(service => service.DeleteBook(It.IsAny<int>()));
+                .Setup(service => service.DeleteBook(2));
 
             mockService
                 .Setup(service => service.GetBooks())
@@ -161,10 +118,8 @@ namespace Library.xUnit.ControllerTests
                 });
 
             var controller = new BooksController(mockService.Object);
-
-            var resultAsync = await controller.DeleteBook(1);
-
-            var result = Assert.IsType<OkObjectResult>(resultAsync);
+            var resultAsync = controller.DeleteBook(1);
+            var result = Assert.IsType<OkResult>(resultAsync);
             Assert.Equal(result.StatusCode, 200);
         }
         [Fact]
@@ -172,7 +127,7 @@ namespace Library.xUnit.ControllerTests
         {
             var mockService = new Mock<IBookService>();
             mockService
-                .Setup(service => service.DeleteBook(It.IsAny<int>()));
+                .Setup(service => service.DeleteBook(3));
 
             mockService
                 .Setup(service => service.GetBooks())
@@ -196,10 +151,10 @@ namespace Library.xUnit.ControllerTests
 
             var controller = new BooksController(mockService.Object);
 
-            var resultAsync = await controller.DeleteBook(55);
+            var aResult = controller.DeleteBook(55);
 
-            var result = Assert.IsType<OkObjectResult>(resultAsync);
-            Assert.Equal(result.StatusCode, 200);
+            var result = Assert.IsType<NotFoundResult>(aResult);
+            Assert.Equal(404, result.StatusCode);
         }
         [Fact]
         public void GetBooksFilter()

@@ -13,13 +13,13 @@ namespace Library.MVC.Controllers
         }
 
         // GET: HomeController
-        public ActionResult Index()
+        public ViewResult Index()
         {
             ViewBag.Books = _bookService.GetBooks();
             return View();
         }
 
-        public ActionResult NumberOfBooks()
+        public ViewResult NumberOfBooks()
         {
             ViewBag.Count = _bookService.CountBooks();
             return View();
